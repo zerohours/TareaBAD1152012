@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Horario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Horario</h2>
+
+<p>
+    Muestra un listado de todas los horarios para doctores en el sistema.
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Hora de Entrada
+        </th>
+        <th>
+            Hora de Salida
+        </th>
+        <th>
+            Día
+        </th>
+        <th>
+            Disponibilidad
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.HORA_ENTRADA
+        </td>
+        <td>
+            @item.HORA_SALIDA
+        </td>
+        <td>
+            @item.DIA
+        </td>
+        <td>
+            @item.DISPONIBILIDAD Personas
+        </td>
+        <td>
+            @String.Format("{0:d}", item.FECHA_HORARIO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_HORARIO })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_HORARIO })
+        </td>
+    </tr>
+}
+
+</table>

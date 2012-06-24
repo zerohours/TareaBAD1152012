@@ -276,6 +276,7 @@
     <Property Name="DIA" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
     <Property Name="DISPONIBILIDAD" Type="Int32" Nullable="false" />
     <NavigationProperty Name="DOCTOR" Relationship="BadApp.Models.TRABAJA" FromRole="HORARIO" ToRole="DOCTOR" />
+    <Property Type="DateTime" Name="FECHA_HORARIO" Nullable="false" />
   </EntityType>
   <EntityType Name="Laboratorista">
     <Key>

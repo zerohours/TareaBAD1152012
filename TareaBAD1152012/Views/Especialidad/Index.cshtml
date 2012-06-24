@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Especialidad>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Especialidades</h2>
+
+<p>
+    Muestra un listado de todas las especialidades en el sistema.
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Codigo Especialidad
+        </th>
+        <th>
+            Nombre Especialidad
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.ID_ESPECIALIDAD
+        </td>
+        <td>
+            @item.NOMBRE_ESP
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_ESPECIALIDAD })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_ESPECIALIDAD })
+        </td>
+    </tr>
+}
+
+</table>
+

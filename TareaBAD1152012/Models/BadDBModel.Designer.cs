@@ -3125,7 +3125,8 @@ namespace TareaBAD1152012.Models
         /// <param name="hORA_SALIDA">Valor inicial de la propiedad HORA_SALIDA.</param>
         /// <param name="dIA">Valor inicial de la propiedad DIA.</param>
         /// <param name="dISPONIBILIDAD">Valor inicial de la propiedad DISPONIBILIDAD.</param>
-        public static Horario CreateHorario(global::System.Int32 iD_HORARIO, global::System.TimeSpan hORA_ENTRADA, global::System.TimeSpan hORA_SALIDA, global::System.String dIA, global::System.Int32 dISPONIBILIDAD)
+        /// <param name="fECHA_HORARIO">Valor inicial de la propiedad FECHA_HORARIO.</param>
+        public static Horario CreateHorario(global::System.Int32 iD_HORARIO, global::System.TimeSpan hORA_ENTRADA, global::System.TimeSpan hORA_SALIDA, global::System.String dIA, global::System.Int32 dISPONIBILIDAD, global::System.DateTime fECHA_HORARIO)
         {
             Horario horario = new Horario();
             horario.ID_HORARIO = iD_HORARIO;
@@ -3133,6 +3134,7 @@ namespace TareaBAD1152012.Models
             horario.HORA_SALIDA = hORA_SALIDA;
             horario.DIA = dIA;
             horario.DISPONIBILIDAD = dISPONIBILIDAD;
+            horario.FECHA_HORARIO = fECHA_HORARIO;
             return horario;
         }
 
@@ -3261,6 +3263,30 @@ namespace TareaBAD1152012.Models
         private global::System.Int32 _DISPONIBILIDAD;
         partial void OnDISPONIBILIDADChanging(global::System.Int32 value);
         partial void OnDISPONIBILIDADChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FECHA_HORARIO
+        {
+            get
+            {
+                return _FECHA_HORARIO;
+            }
+            set
+            {
+                OnFECHA_HORARIOChanging(value);
+                ReportPropertyChanging("FECHA_HORARIO");
+                _FECHA_HORARIO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FECHA_HORARIO");
+                OnFECHA_HORARIOChanged();
+            }
+        }
+        private global::System.DateTime _FECHA_HORARIO;
+        partial void OnFECHA_HORARIOChanging(global::System.DateTime value);
+        partial void OnFECHA_HORARIOChanged();
 
         #endregion
     

@@ -1,0 +1,45 @@
+﻿@model TareaBAD1152012.Models.HoraCita
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>HoraCita</legend>
+
+        @Html.HiddenFor(model => model.ID_HORA_CITA)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HORA_INICIO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HORA_INICIO)
+            @Html.ValidationMessageFor(model => model.HORA_INICIO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HORA_FIN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HORA_FIN)
+            @Html.ValidationMessageFor(model => model.HORA_FIN)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

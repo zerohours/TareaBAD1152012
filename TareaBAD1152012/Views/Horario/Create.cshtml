@@ -1,0 +1,67 @@
+﻿@model TareaBAD1152012.Models.Horario
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Horario</legend>
+
+        <div class="editor-label">
+            @Html.Label("Hora de Entrada")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HORA_ENTRADA)
+            @Html.ValidationMessageFor(model => model.HORA_ENTRADA)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Hora de Salida")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HORA_SALIDA)
+            @Html.ValidationMessageFor(model => model.HORA_SALIDA)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Día de la Semana")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DIA)
+            @Html.ValidationMessageFor(model => model.DIA)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Disponibilidad")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DISPONIBILIDAD)
+            @Html.ValidationMessageFor(model => model.DISPONIBILIDAD)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Fecha")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FECHA_HORARIO)
+            @Html.ValidationMessageFor(model => model.FECHA_HORARIO)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

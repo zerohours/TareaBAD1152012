@@ -295,6 +295,7 @@
     <Property Name="HORA_SALIDA" Type="time" />
     <Property Name="DIA" Type="char" Nullable="false" MaxLength="10" />
     <Property Name="DISPONIBILIDAD" Type="int" Nullable="false" />
+    <Property Name="FECHA_HORARIO" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="LABORATORISTA">
     <Key>
@@ -849,6 +850,18 @@
   <Function Name="delete_doctor_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="jvpm_doc" Type="int" Mode="In" />
   </Function>
+  <Function Name="delete_especialidad_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_ESPECIALIDAD" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="delete_expediente_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="num_expediente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_hora_cita_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_HORA_CITA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_horario_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_horario" Type="int" Mode="In" />
+  </Function>
   <Function Name="delete_municipio_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_municipio" Type="int" Mode="In" />
   </Function>
@@ -864,6 +877,29 @@
   <Function Name="insert_doctor_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_persona" Type="int" Mode="In" />
     <Parameter Name="jvpm_doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insert_especialidad_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_ESPECIALIDAD" Type="varchar" Mode="In" />
+    <Parameter Name="NOMBRE_ESP" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insert_expediente_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="num_expediente" Type="int" Mode="In" />
+    <Parameter Name="id_persona" Type="int" Mode="In" />
+    <Parameter Name="cod_pac" Type="int" Mode="In" />
+    <Parameter Name="fecha_creacion" Type="date" Mode="In" />
+    <Parameter Name="estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="insert_hora_cita_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_HORA_CITA" Type="int" Mode="In" />
+    <Parameter Name="HORA_INICIO" Type="time" Mode="In" />
+    <Parameter Name="HORA_FIN" Type="time" Mode="In" />
+  </Function>
+  <Function Name="insert_horario_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HORA_ENTRADA" Type="time" Mode="In" />
+    <Parameter Name="HORA_SALIDA" Type="time" Mode="In" />
+    <Parameter Name="DIA" Type="char" Mode="In" />
+    <Parameter Name="DISPONIBILIDAD" Type="int" Mode="In" />
+    <Parameter Name="FECHA_HORARIO" Type="date" Mode="In" />
   </Function>
   <Function Name="insert_municipio_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_depto" Type="int" Mode="In" />
@@ -897,6 +933,30 @@
   <Function Name="update_doctor_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_persona" Type="int" Mode="In" />
     <Parameter Name="jvpm_doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="update_especialidad_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_ESPECIALIDAD" Type="varchar" Mode="In" />
+    <Parameter Name="NOMBRE_ESP" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="update_expediente_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="num_expediente" Type="int" Mode="In" />
+    <Parameter Name="id_persona" Type="int" Mode="In" />
+    <Parameter Name="cod_pac" Type="int" Mode="In" />
+    <Parameter Name="fecha_creacion" Type="date" Mode="In" />
+    <Parameter Name="estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="update_hora_cita_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_HORA_CITA" Type="int" Mode="In" />
+    <Parameter Name="HORA_INICIO" Type="time" Mode="In" />
+    <Parameter Name="HORA_FIN" Type="time" Mode="In" />
+  </Function>
+  <Function Name="update_horario_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_horario" Type="int" Mode="In" />
+    <Parameter Name="hora_entrada" Type="time" Mode="In" />
+    <Parameter Name="hora_salida" Type="time" Mode="In" />
+    <Parameter Name="dia" Type="char" Mode="In" />
+    <Parameter Name="disponibilidad" Type="int" Mode="In" />
+    <Parameter Name="FECHA_HORARIO" Type="date" Mode="In" />
   </Function>
   <Function Name="update_municipio_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_municipio" Type="int" Mode="In" />

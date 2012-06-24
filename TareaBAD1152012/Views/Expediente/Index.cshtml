@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Expediente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Codigo Expediente
+        </th>
+        <th>
+            Nombre Paciente
+        </th>
+        <th>
+            Fecha de Creacion
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.NUM_EXPEDIENTE
+        </td>
+        <td>
+            @item.PACIENTE.PERSONA.PRIMER_NOMBRE @item.PACIENTE.PERSONA.SEGUNDO_NOMBRE @item.PACIENTE.PERSONA.PRIMER_APELLIDO @item.PACIENTE.PERSONA.SEGUNDO_APELLIDO
+        </td>
+        <td>
+            @String.Format("{0:d}", item.FECHA_CREACION)
+        </td>
+        <td>
+            @if (@item.ESTADO)
+            {
+              @Html.Label("Activo")
+            }
+            else
+            {
+              @Html.Label("Inactivo")
+            }
+        </td>
+        <th>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NUM_EXPEDIENTE })
+        </th>
+        <th>
+            @Html.ActionLink("Delete", "Delete", new { id=item.NUM_EXPEDIENTE })
+        </th>
+    </tr>
+}
+
+</table>
+

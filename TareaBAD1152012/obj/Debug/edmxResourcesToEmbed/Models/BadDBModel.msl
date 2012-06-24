@@ -122,6 +122,21 @@
           <ScalarProperty Name="NOMBRE_ESP" ColumnName="NOMBRE_ESP" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Especialidad">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_especialidad_pr">
+            <ScalarProperty Name="NOMBRE_ESP" ParameterName="NOMBRE_ESP" />
+            <ScalarProperty Name="ID_ESPECIALIDAD" ParameterName="ID_ESPECIALIDAD" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_especialidad_pr">
+            <ScalarProperty Name="NOMBRE_ESP" ParameterName="NOMBRE_ESP" Version="Current" />
+            <ScalarProperty Name="ID_ESPECIALIDAD" ParameterName="ID_ESPECIALIDAD" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_especialidad_pr">
+            <ScalarProperty Name="ID_ESPECIALIDAD" ParameterName="ID_ESPECIALIDAD" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ExamenSet">
       <EntityTypeMapping TypeName="BadApp.Models.Examen">
@@ -142,6 +157,27 @@
           <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Expediente">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_expediente_pr">
+            <ScalarProperty Name="ESTADO" ParameterName="estado" />
+            <ScalarProperty Name="FECHA_CREACION" ParameterName="fecha_creacion" />
+            <ScalarProperty Name="COD_PAC" ParameterName="cod_pac" />
+            <ScalarProperty Name="ID_PERSONA" ParameterName="id_persona" />
+            <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="num_expediente" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_expediente_pr">
+            <ScalarProperty Name="ESTADO" ParameterName="estado" Version="Current" />
+            <ScalarProperty Name="FECHA_CREACION" ParameterName="fecha_creacion" Version="Current" />
+            <ScalarProperty Name="COD_PAC" ParameterName="cod_pac" Version="Current" />
+            <ScalarProperty Name="ID_PERSONA" ParameterName="id_persona" Version="Current" />
+            <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="num_expediente" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_expediente_pr">
+            <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="num_expediente" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="HoraCitaSet">
       <EntityTypeMapping TypeName="BadApp.Models.HoraCita">
@@ -151,16 +187,56 @@
           <ScalarProperty Name="HORA_FIN" ColumnName="HORA_FIN" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.HoraCita">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_hora_cita_pr">
+            <ScalarProperty Name="HORA_FIN" ParameterName="HORA_FIN" />
+            <ScalarProperty Name="HORA_INICIO" ParameterName="HORA_INICIO" />
+            <ScalarProperty Name="ID_HORA_CITA" ParameterName="ID_HORA_CITA" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_hora_cita_pr">
+            <ScalarProperty Name="HORA_FIN" ParameterName="HORA_FIN" Version="Current" />
+            <ScalarProperty Name="HORA_INICIO" ParameterName="HORA_INICIO" Version="Current" />
+            <ScalarProperty Name="ID_HORA_CITA" ParameterName="ID_HORA_CITA" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_hora_cita_pr">
+            <ScalarProperty Name="ID_HORA_CITA" ParameterName="ID_HORA_CITA" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="HorarioSet">
       <EntityTypeMapping TypeName="BadApp.Models.Horario">
         <MappingFragment StoreEntitySet="HORARIO">
+          <ScalarProperty Name="FECHA_HORARIO" ColumnName="FECHA_HORARIO" />
           <ScalarProperty Name="HORA_SALIDA" ColumnName="HORA_SALIDA" />
           <ScalarProperty Name="HORA_ENTRADA" ColumnName="HORA_ENTRADA" />
           <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
           <ScalarProperty Name="DIA" ColumnName="DIA" />
           <ScalarProperty Name="DISPONIBILIDAD" ColumnName="DISPONIBILIDAD" />
         </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Horario">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_horario_pr">
+            <ScalarProperty Name="FECHA_HORARIO" ParameterName="FECHA_HORARIO" />
+            <ScalarProperty Name="DISPONIBILIDAD" ParameterName="DISPONIBILIDAD" />
+            <ScalarProperty Name="DIA" ParameterName="DIA" />
+            <ScalarProperty Name="HORA_SALIDA" ParameterName="HORA_SALIDA" />
+            <ScalarProperty Name="HORA_ENTRADA" ParameterName="HORA_ENTRADA" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_horario_pr">
+            <ScalarProperty Name="DISPONIBILIDAD" ParameterName="disponibilidad" Version="Current" />
+            <ScalarProperty Name="DIA" ParameterName="dia" Version="Current" />
+            <ScalarProperty Name="HORA_SALIDA" ParameterName="hora_salida" Version="Current" />
+            <ScalarProperty Name="HORA_ENTRADA" ParameterName="hora_entrada" Version="Current" />
+            <ScalarProperty Name="ID_HORARIO" ParameterName="ID_horario" Version="Current" />
+            <ScalarProperty Name="FECHA_HORARIO" ParameterName="FECHA_HORARIO" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_horario_pr">
+            <ScalarProperty Name="ID_HORARIO" ParameterName="id_horario" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="LaboratoristaSet">

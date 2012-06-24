@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.HoraCita>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Hora para Citas</h2>
+
+<p>
+    Muestra un listado de todas las horas para cita en el sistema.
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+           Id
+        </th>
+        <th>
+            Hora Inicio
+        </th>
+        <th>
+            Hora Fin
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.ID_HORA_CITA
+        </td>
+        <td>
+            @item.HORA_INICIO
+        </td>
+        <td>
+            @item.HORA_FIN
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_HORA_CITA })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_HORA_CITA })
+        </td>
+    </tr>
+}
+
+</table>
+
