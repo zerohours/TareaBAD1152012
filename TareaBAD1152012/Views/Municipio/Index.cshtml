@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Municipio>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Municipios</h2>
+
+<p>
+    Muestra un listado de todos los departamentos en el sistema.
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>Id</th>
+        <th>
+            Departamento
+        </th>
+        <th>
+            Nombre del Municipio
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.ID_MUNICIPIO</td>
+        <td>
+            @item.DEPARTAMENTO.NOMBRE_DEPTO
+        </td>
+        <td>
+            @item.NOMBRE_MUNICIPIO
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_MUNICIPIO })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_MUNICIPIO })
+        </td>
+    </tr>
+}
+
+</table>
+

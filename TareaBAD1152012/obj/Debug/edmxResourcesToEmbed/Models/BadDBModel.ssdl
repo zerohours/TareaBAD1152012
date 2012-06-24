@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BadApp.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="BadAppModelsStoreContainer">
+    <EntitySet Name="ANTECEDENTES_PERSONALES" EntityType="BadApp.Models.Store.ANTECEDENTES_PERSONALES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ARCHIVO" EntityType="BadApp.Models.Store.ARCHIVO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CATALOGO_ROLES" EntityType="BadApp.Models.Store.CATALOGO_ROLES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CITA" EntityType="BadApp.Models.Store.CITA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CONSULTA" EntityType="BadApp.Models.Store.CONSULTA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DEPARTAMENTO" EntityType="BadApp.Models.Store.DEPARTAMENTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DIAGNOSTICO" EntityType="BadApp.Models.Store.DIAGNOSTICO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DIAGNOSTICO_TRATAMIENTO" EntityType="BadApp.Models.Store.DIAGNOSTICO_TRATAMIENTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DOCTOR" EntityType="BadApp.Models.Store.DOCTOR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DOCTOR_ESPECIALIDAD" EntityType="BadApp.Models.Store.DOCTOR_ESPECIALIDAD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ESPECIALIDAD" EntityType="BadApp.Models.Store.ESPECIALIDAD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EXAMEN" EntityType="BadApp.Models.Store.EXAMEN" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EXPEDIENTE" EntityType="BadApp.Models.Store.EXPEDIENTE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HORA_CITA" EntityType="BadApp.Models.Store.HORA_CITA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HORARIO" EntityType="BadApp.Models.Store.HORARIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LABORATORISTA" EntityType="BadApp.Models.Store.LABORATORISTA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MEDICAMENTO" EntityType="BadApp.Models.Store.MEDICAMENTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MUNICIPIO" EntityType="BadApp.Models.Store.MUNICIPIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PACIENTE" EntityType="BadApp.Models.Store.PACIENTE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PERSONA" EntityType="BadApp.Models.Store.PERSONA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCE" EntityType="BadApp.Models.Store.PRODUCE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="REFERENCIA" EntityType="BadApp.Models.Store.REFERENCIA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RESULTADO_EXAMEN" EntityType="BadApp.Models.Store.RESULTADO_EXAMEN" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SE_ASOCIA_A_EXAMEN" EntityType="BadApp.Models.Store.SE_ASOCIA_A_EXAMEN" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SIGNOS_VITALES" EntityType="BadApp.Models.Store.SIGNOS_VITALES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TELEFONO" EntityType="BadApp.Models.Store.TELEFONO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TRABAJA" EntityType="BadApp.Models.Store.TRABAJA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TRATAMIENTO" EntityType="BadApp.Models.Store.TRATAMIENTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TRATAMIENTO_MEDICAMENTO" EntityType="BadApp.Models.Store.TRATAMIENTO_MEDICAMENTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIO" EntityType="BadApp.Models.Store.USUARIO" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ANTECEDENTES_EXPEDIENTE" Association="BadApp.Models.Store.FK_ANTECEDENTES_EXPEDIENTE">
+      <End Role="EXPEDIENTE" EntitySet="EXPEDIENTE" />
+      <End Role="ANTECEDENTES_PERSONALES" EntitySet="ANTECEDENTES_PERSONALES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ARCHIVO_PERSONA" Association="BadApp.Models.Store.FK_ARCHIVO_PERSONA">
+      <End Role="PERSONA" EntitySet="PERSONA" />
+      <End Role="ARCHIVO" EntitySet="ARCHIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_ARCHIVO" Association="BadApp.Models.Store.FK_CITA_ARCHIVO">
+      <End Role="ARCHIVO" EntitySet="ARCHIVO" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_DOCTOR" Association="BadApp.Models.Store.FK_CITA_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_EXPEDIENTE" Association="BadApp.Models.Store.FK_CITA_EXPEDIENTE">
+      <End Role="EXPEDIENTE" EntitySet="EXPEDIENTE" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_HORA_CITA" Association="BadApp.Models.Store.FK_CITA_HORA_CITA">
+      <End Role="HORA_CITA" EntitySet="HORA_CITA" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="fk_codigodiagnostico" Association="BadApp.Models.Store.fk_codigodiagnostico">
+      <End Role="DIAGNOSTICO" EntitySet="DIAGNOSTICO" />
+      <End Role="DIAGNOSTICO_TRATAMIENTO" EntitySet="DIAGNOSTICO_TRATAMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_ESP_DOC" Association="BadApp.Models.Store.FK_DOCTOR_ESP_DOC">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="DOCTOR_ESPECIALIDAD" EntitySet="DOCTOR_ESPECIALIDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_ESP_ESP" Association="BadApp.Models.Store.FK_DOCTOR_ESP_ESP">
+      <End Role="ESPECIALIDAD" EntitySet="ESPECIALIDAD" />
+      <End Role="DOCTOR_ESPECIALIDAD" EntitySet="DOCTOR_ESPECIALIDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_PERSONA" Association="BadApp.Models.Store.FK_DOCTOR_PERSONA">
+      <End Role="PERSONA" EntitySet="PERSONA" />
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXAMEN_DIAGNOSTICO" Association="BadApp.Models.Store.FK_EXAMEN_DIAGNOSTICO">
+      <End Role="DIAGNOSTICO" EntitySet="DIAGNOSTICO" />
+      <End Role="SE_ASOCIA_A_EXAMEN" EntitySet="SE_ASOCIA_A_EXAMEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXAMEN_EXA" Association="BadApp.Models.Store.FK_EXAMEN_EXA">
+      <End Role="EXAMEN" EntitySet="EXAMEN" />
+      <End Role="SE_ASOCIA_A_EXAMEN" EntitySet="SE_ASOCIA_A_EXAMEN" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPEDIENTE_COD_PACIENTE" Association="BadApp.Models.Store.fk_EXPEDIENTE_COD_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="EXPEDIENTE" EntitySet="EXPEDIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LABORATORISTA_PERSONA" Association="BadApp.Models.Store.FK_LABORATORISTA_PERSONA">
+      <End Role="PERSONA" EntitySet="PERSONA" />
+      <End Role="LABORATORISTA" EntitySet="LABORATORISTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MUNICIPIO_DEPTO" Association="BadApp.Models.Store.FK_MUNICIPIO_DEPTO">
+      <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
+      <End Role="MUNICIPIO" EntitySet="MUNICIPIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACIENTE_PERSONA" Association="BadApp.Models.Store.FK_PACIENTE_PERSONA">
+      <End Role="PERSONA" EntitySet="PERSONA" />
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONA_MUNICIPIO" Association="BadApp.Models.Store.FK_PERSONA_MUNICIPIO">
+      <End Role="MUNICIPIO" EntitySet="MUNICIPIO" />
+      <End Role="PERSONA" EntitySet="PERSONA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCE_CONSULTA" Association="BadApp.Models.Store.FK_PRODUCE_CONSULTA">
+      <End Role="CONSULTA" EntitySet="CONSULTA" />
+      <End Role="PRODUCE" EntitySet="PRODUCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCE_DIAGNOSTICO" Association="BadApp.Models.Store.FK_PRODUCE_DIAGNOSTICO">
+      <End Role="DIAGNOSTICO" EntitySet="DIAGNOSTICO" />
+      <End Role="PRODUCE" EntitySet="PRODUCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REFERENCIA_EXPEDIENTE" Association="BadApp.Models.Store.FK_REFERENCIA_EXPEDIENTE">
+      <End Role="EXPEDIENTE" EntitySet="EXPEDIENTE" />
+      <End Role="REFERENCIA" EntitySet="REFERENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULTADO_EXA_EXAMEN" Association="BadApp.Models.Store.FK_RESULTADO_EXA_EXAMEN">
+      <End Role="EXAMEN" EntitySet="EXAMEN" />
+      <End Role="RESULTADO_EXAMEN" EntitySet="RESULTADO_EXAMEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULTADO_LABORATORISTA" Association="BadApp.Models.Store.FK_RESULTADO_LABORATORISTA">
+      <End Role="LABORATORISTA" EntitySet="LABORATORISTA" />
+      <End Role="RESULTADO_EXAMEN" EntitySet="RESULTADO_EXAMEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIGNOS_VITALES" Association="BadApp.Models.Store.FK_SIGNOS_VITALES">
+      <End Role="EXPEDIENTE" EntitySet="EXPEDIENTE" />
+      <End Role="SIGNOS_VITALES" EntitySet="SIGNOS_VITALES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO_PERSONA" Association="BadApp.Models.Store.FK_TELEFONO_PERSONA">
+      <End Role="PERSONA" EntitySet="PERSONA" />
+      <End Role="TELEFONO" EntitySet="TELEFONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRABAJA_DOC" Association="BadApp.Models.Store.FK_TRABAJA_DOC">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="TRABAJA" EntitySet="TRABAJA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRABAJA_HORARIO" Association="BadApp.Models.Store.FK_TRABAJA_HORARIO">
+      <End Role="HORARIO" EntitySet="HORARIO" />
+      <End Role="TRABAJA" EntitySet="TRABAJA" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tratamiento" Association="BadApp.Models.Store.fk_tratamiento">
+      <End Role="TRATAMIENTO" EntitySet="TRATAMIENTO" />
+      <End Role="DIAGNOSTICO_TRATAMIENTO" EntitySet="DIAGNOSTICO_TRATAMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRATAMIENTO_MEDICAMIENTO" Association="BadApp.Models.Store.FK_TRATAMIENTO_MEDICAMIENTO">
+      <End Role="MEDICAMENTO" EntitySet="MEDICAMENTO" />
+      <End Role="TRATAMIENTO_MEDICAMENTO" EntitySet="TRATAMIENTO_MEDICAMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRATAMIENTO_TRAT" Association="BadApp.Models.Store.FK_TRATAMIENTO_TRAT">
+      <End Role="TRATAMIENTO" EntitySet="TRATAMIENTO" />
+      <End Role="TRATAMIENTO_MEDICAMENTO" EntitySet="TRATAMIENTO_MEDICAMENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_ROL" Association="BadApp.Models.Store.FK_USUARIO_ROL">
+      <End Role="CATALOGO_ROLES" EntitySet="CATALOGO_ROLES" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CONSULTA_EXPEDIENTE" Association="BadApp.Models.Store.PK_CONSULTA_EXPEDIENTE">
+      <End Role="EXPEDIENTE" EntitySet="EXPEDIENTE" />
+      <End Role="CONSULTA" EntitySet="CONSULTA" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ANTECEDENTES_PERSONALES">
+    <Key>
+      <PropertyRef Name="ID_ANTECEDENTES" />
+    </Key>
+    <Property Name="ID_ANTECEDENTES" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
+    <Property Name="FUMA" Type="bit" Nullable="false" />
+    <Property Name="ALCOHOLICO" Type="bit" Nullable="false" />
+    <Property Name="ANTIDEPRESIVO" Type="bit" Nullable="false" />
+    <Property Name="HABITOSALIMENTICIOS" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CONDICION_DE_VIDA" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ANTECEDENTES_HEREDO_FAMILIARES" Type="text" />
+    <Property Name="OTROS" Type="text" />
+    <Property Name="PERSONALES_PATOLOGICOS" Type="text" />
+    <Property Name="DEPORTES" Type="text" />
+    <Property Name="INMUNIZACIONES" Type="text" />
+    <Property Name="TOXICOMANIAS" Type="text" />
+    <Property Name="GINECO_OBSTETRICOS" Type="text" />
+  </EntityType>
+  <EntityType Name="ARCHIVO">
+    <Key>
+      <PropertyRef Name="ID_PERSONA" />
+      <PropertyRef Name="COD_EMPLEADO" />
+    </Key>
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="COD_EMPLEADO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATALOGO_ROLES">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_ROL" Type="varchar" Nullable="false" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="CITA">
+    <Key>
+      <PropertyRef Name="ID_CITA" />
+    </Key>
+    <Property Name="ID_CITA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
+    <Property Name="COD_EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="JVPM_DOC" Type="int" Nullable="false" />
+    <Property Name="ID_HORA_CITA" Type="int" Nullable="false" />
+    <Property Name="FECHA_CITA" Type="date" Nullable="false" />
+    <Property Name="REALIZADA" Type="bit" />
+    <Property Name="ARCH_ID_PERSONA" Type="int" />
+  </EntityType>
+  <EntityType Name="CONSULTA">
+    <Key>
+      <PropertyRef Name="ID_CONSULTA" />
+    </Key>
+    <Property Name="ID_CONSULTA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
+    <Property Name="SINTOMAS" Type="text" />
+    <Property Name="FECHA_CONSULTA" Type="date" />
+  </EntityType>
+  <EntityType Name="DEPARTAMENTO">
+    <Key>
+      <PropertyRef Name="ID_DEPTO" />
+    </Key>
+    <Property Name="ID_DEPTO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_DEPTO" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DIAGNOSTICO">
+    <Key>
+      <PropertyRef Name="COD_DIAGNOSTICO" />
+    </Key>
+    <Property Name="COD_DIAGNOSTICO" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="NOMBRE_DIAGNOSTICO" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DIAGNOSTICO_TRATAMIENTO">
+    <Key>
+      <PropertyRef Name="COD_DIAGNOSTICO" />
+      <PropertyRef Name="ID_TRATAMIENTO" />
+    </Key>
+    <Property Name="COD_DIAGNOSTICO" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="ID_TRATAMIENTO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="ID_PERSONA" />
+      <PropertyRef Name="JVPM_DOC" />
+    </Key>
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="JVPM_DOC" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DOCTOR_ESPECIALIDAD">
+    <Key>
+      <PropertyRef Name="ID_PERSONA" />
+      <PropertyRef Name="JVPM_DOC" />
+      <PropertyRef Name="ID_ESPECIALIDAD" />
+    </Key>
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="JVPM_DOC" Type="int" Nullable="false" />
+    <Property Name="ID_ESPECIALIDAD" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ESPECIALIDAD">
+    <Key>
+      <PropertyRef Name="ID_ESPECIALIDAD" />
+    </Key>
+    <Property Name="ID_ESPECIALIDAD" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="NOMBRE_ESP" Type="varchar" Nullable="false" MaxLength="65" />
+  </EntityType>
+  <EntityType Name="EXAMEN">
+    <Key>
+      <PropertyRef Name="ID_EXAMEN" />
+    </Key>
+    <Property Name="ID_EXAMEN" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_EXAMEN" Type="varchar" Nullable="false" MaxLength="60" />
+    <Property Name="TIPO_EXAMEN" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EXPEDIENTE">
+    <Key>
+      <PropertyRef Name="NUM_EXPEDIENTE" />
+    </Key>
+    <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="COD_PAC" Type="int" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HORA_CITA">
+    <Key>
+      <PropertyRef Name="ID_HORA_CITA" />
+    </Key>
+    <Property Name="ID_HORA_CITA" Type="int" Nullable="false" />
+    <Property Name="HORA_INICIO" Type="time" Nullable="false" />
+    <Property Name="HORA_FIN" Type="time" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HORARIO">
+    <Key>
+      <PropertyRef Name="ID_HORARIO" />
+    </Key>
+    <Property Name="ID_HORARIO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="HORA_ENTRADA" Type="time" />
+    <Property Name="HORA_SALIDA" Type="time" />
+    <Property Name="DIA" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="DISPONIBILIDAD" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LABORATORISTA">
+    <Key>
+      <PropertyRef Name="ID_PERSONA" />
+      <PropertyRef Name="JVPM_LAB" />
+    </Key>
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="JVPM_LAB" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEDICAMENTO">
+    <Key>
+      <PropertyRef Name="ID_MEDICAMENTO" />
+    </Key>
+    <Property Name="ID_MEDICAMENTO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_MEDICAMENTO" Type="varchar" Nullable="false" MaxLength="55" />
+    <Property Name="VIA_ADMINISTRACION" Type="varchar" MaxLength="20" />
+    <Property Name="CONTRAINDICACION" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="text" />
+  </EntityType>
+  <EntityType Name="MUNICIPIO">
+    <Key>
+      <PropertyRef Name="ID_DEPTO" />
+      <PropertyRef Name="ID_MUNICIPIO" />
+    </Key>
+    <Property Name="ID_DEPTO" Type="int" Nullable="false" />
+    <Property Name="ID_MUNICIPIO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_MUNICIPIO" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PACIENTE">
+    <Key>
+      <PropertyRef Name="ID_PERSONA" />
+      <PropertyRef Name="COD_PAC" />
+    </Key>
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="COD_PAC" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="PERSONA">
+    <Key>
+      <PropertyRef Name="ID_PERSONA" />
+    </Key>
+    <Property Name="PRIMER_NOMBRE" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="SEGUNDO_NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="PRIMER_APELLIDO" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="SEGUNDO_APELLIDO" Type="varchar" MaxLength="50" />
+    <Property Name="DUI" Type="char" MaxLength="9" />
+    <Property Name="NIT" Type="char" MaxLength="15" />
+    <Property Name="SEXO" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="PROFESION" Type="varchar" MaxLength="25" />
+    <Property Name="FECHA_NAC" Type="date" Nullable="false" />
+    <Property Name="DUI_ENCARGADO" Type="char" MaxLength="9" />
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DEPTO" Type="int" Nullable="false" />
+    <Property Name="ID_MUNICIPIO" Type="int" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PRODUCE">
+    <Key>
+      <PropertyRef Name="ID_CONSULTA" />
+      <PropertyRef Name="COD_DIAGNOSTICO" />
+    </Key>
+    <Property Name="ID_CONSULTA" Type="int" Nullable="false" />
+    <Property Name="COD_DIAGNOSTICO" Type="varchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="REFERENCIA">
+    <Key>
+      <PropertyRef Name="NUM_REFERENCIA" />
+    </Key>
+    <Property Name="NUM_REFERENCIA" Type="int" Nullable="false" />
+    <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
+    <Property Name="DIAGNOSTICO_DE" Type="text" />
+    <Property Name="REFERIDO_A" Type="varchar" MaxLength="50" />
+    <Property Name="MOTIVO" Type="varchar" MaxLength="100" />
+    <Property Name="MEDICO_QUE_REFIERE" Type="varchar" MaxLength="100" />
+    <Property Name="HOSPITAL" Type="varchar" MaxLength="100" />
+    <Property Name="JVPM_DOCTOR" Type="int" Nullable="false" />
+    <Property Name="FECHA_REFERENCIA" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RESULTADO_EXAMEN">
+    <Key>
+      <PropertyRef Name="ID_RESULTADO" />
+    </Key>
+    <Property Name="ID_RESULTADO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="JVPM_LAB" Type="int" Nullable="false" />
+    <Property Name="ID_EXAMEN" Type="int" Nullable="false" />
+    <Property Name="OBSERVACION_1" Type="text" />
+    <Property Name="OBSERVACION_2" Type="text" />
+    <Property Name="OBSERVACION_3" Type="text" />
+    <Property Name="OBSERVACION_4" Type="text" />
+    <Property Name="OBSERVACION_5" Type="text" />
+    <Property Name="OBSERVACION_6" Type="text" />
+  </EntityType>
+  <EntityType Name="SE_ASOCIA_A_EXAMEN">
+    <Key>
+      <PropertyRef Name="COD_DIAGNOSTICO" />
+      <PropertyRef Name="ID_EXAMEN" />
+    </Key>
+    <Property Name="COD_DIAGNOSTICO" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="ID_EXAMEN" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SIGNOS_VITALES">
+    <Key>
+      <PropertyRef Name="ID_SIGNOSV" />
+    </Key>
+    <Property Name="ID_SIGNOSV" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
+    <Property Name="FRECUENCIA_CARDIACA" Type="varchar" MaxLength="25" />
+    <Property Name="TEMPERATURA_CORPORAL" Type="varchar" MaxLength="25" />
+    <Property Name="PESO" Type="int" />
+    <Property Name="PRESION_ARTERIAL" Type="varchar" MaxLength="25" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="100" />
+    <Property Name="FRECUENCIA_RESPIRATORIA" Type="char" MaxLength="10" />
+    <Property Name="OTROS_SIGNOS" Type="text" />
+  </EntityType>
+  <EntityType Name="TELEFONO">
+    <Key>
+      <PropertyRef Name="ID_TELEFONO" />
+    </Key>
+    <Property Name="TELEFONO_PERSONAL" Type="int" />
+    <Property Name="TELEFONO_CASA" Type="int" />
+    <Property Name="TELEFONO_ALTERNATIVO" Type="int" />
+    <Property Name="ID_TELEFONO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TRABAJA">
+    <Key>
+      <PropertyRef Name="ID_PERSONA" />
+      <PropertyRef Name="JVPM_DOC" />
+      <PropertyRef Name="ID_HORARIO" />
+    </Key>
+    <Property Name="ID_PERSONA" Type="int" Nullable="false" />
+    <Property Name="JVPM_DOC" Type="int" Nullable="false" />
+    <Property Name="ID_HORARIO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TRATAMIENTO">
+    <Key>
+      <PropertyRef Name="ID_TRATAMIENTO" />
+    </Key>
+    <Property Name="ID_TRATAMIENTO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DOSIS" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="DURACION" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="OBSERVACIONES" Type="text" />
+    <Property Name="DETALLE_TRATAMIENTO" Type="text" />
+  </EntityType>
+  <EntityType Name="TRATAMIENTO_MEDICAMENTO">
+    <Key>
+      <PropertyRef Name="ID_TRATAMIENTO" />
+      <PropertyRef Name="ID_MEDICAMENTO" />
+    </Key>
+    <Property Name="ID_TRATAMIENTO" Type="int" Nullable="false" />
+    <Property Name="ID_MEDICAMENTO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ROL" Type="int" Nullable="false" />
+    <Property Name="NOMBRE_USUARIO" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CONTRASENA" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ESTADO_USUARIO" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_ANTECEDENTES_EXPEDIENTE">
+    <End Role="EXPEDIENTE" Type="BadApp.Models.Store.EXPEDIENTE" Multiplicity="1" />
+    <End Role="ANTECEDENTES_PERSONALES" Type="BadApp.Models.Store.ANTECEDENTES_PERSONALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXPEDIENTE">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Principal>
+      <Dependent Role="ANTECEDENTES_PERSONALES">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ARCHIVO_PERSONA">
+    <End Role="PERSONA" Type="BadApp.Models.Store.PERSONA" Multiplicity="1" />
+    <End Role="ARCHIVO" Type="BadApp.Models.Store.ARCHIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="ID_PERSONA" />
+      </Principal>
+      <Dependent Role="ARCHIVO">
+        <PropertyRef Name="ID_PERSONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_ARCHIVO">
+    <End Role="ARCHIVO" Type="BadApp.Models.Store.ARCHIVO" Multiplicity="0..1" />
+    <End Role="CITA" Type="BadApp.Models.Store.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ARCHIVO">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="COD_EMPLEADO" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ARCH_ID_PERSONA" />
+        <PropertyRef Name="COD_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_DOCTOR">
+    <End Role="DOCTOR" Type="BadApp.Models.Store.DOCTOR" Multiplicity="1" />
+    <End Role="CITA" Type="BadApp.Models.Store.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_DOC" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_DOC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_EXPEDIENTE">
+    <End Role="EXPEDIENTE" Type="BadApp.Models.Store.EXPEDIENTE" Multiplicity="1" />
+    <End Role="CITA" Type="BadApp.Models.Store.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXPEDIENTE">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_HORA_CITA">
+    <End Role="HORA_CITA" Type="BadApp.Models.Store.HORA_CITA" Multiplicity="1" />
+    <End Role="CITA" Type="BadApp.Models.Store.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HORA_CITA">
+        <PropertyRef Name="ID_HORA_CITA" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_HORA_CITA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_codigodiagnostico">
+    <End Role="DIAGNOSTICO" Type="BadApp.Models.Store.DIAGNOSTICO" Multiplicity="1" />
+    <End Role="DIAGNOSTICO_TRATAMIENTO" Type="BadApp.Models.Store.DIAGNOSTICO_TRATAMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIAGNOSTICO">
+        <PropertyRef Name="COD_DIAGNOSTICO" />
+      </Principal>
+      <Dependent Role="DIAGNOSTICO_TRATAMIENTO">
+        <PropertyRef Name="COD_DIAGNOSTICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_ESP_DOC">
+    <End Role="DOCTOR" Type="BadApp.Models.Store.DOCTOR" Multiplicity="1" />
+    <End Role="DOCTOR_ESPECIALIDAD" Type="BadApp.Models.Store.DOCTOR_ESPECIALIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_DOC" />
+      </Principal>
+      <Dependent Role="DOCTOR_ESPECIALIDAD">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_DOC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_ESP_ESP">
+    <End Role="ESPECIALIDAD" Type="BadApp.Models.Store.ESPECIALIDAD" Multiplicity="1" />
+    <End Role="DOCTOR_ESPECIALIDAD" Type="BadApp.Models.Store.DOCTOR_ESPECIALIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESPECIALIDAD">
+        <PropertyRef Name="ID_ESPECIALIDAD" />
+      </Principal>
+      <Dependent Role="DOCTOR_ESPECIALIDAD">
+        <PropertyRef Name="ID_ESPECIALIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_PERSONA">
+    <End Role="PERSONA" Type="BadApp.Models.Store.PERSONA" Multiplicity="1" />
+    <End Role="DOCTOR" Type="BadApp.Models.Store.DOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="ID_PERSONA" />
+      </Principal>
+      <Dependent Role="DOCTOR">
+        <PropertyRef Name="ID_PERSONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXAMEN_DIAGNOSTICO">
+    <End Role="DIAGNOSTICO" Type="BadApp.Models.Store.DIAGNOSTICO" Multiplicity="1" />
+    <End Role="SE_ASOCIA_A_EXAMEN" Type="BadApp.Models.Store.SE_ASOCIA_A_EXAMEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIAGNOSTICO">
+        <PropertyRef Name="COD_DIAGNOSTICO" />
+      </Principal>
+      <Dependent Role="SE_ASOCIA_A_EXAMEN">
+        <PropertyRef Name="COD_DIAGNOSTICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXAMEN_EXA">
+    <End Role="EXAMEN" Type="BadApp.Models.Store.EXAMEN" Multiplicity="1" />
+    <End Role="SE_ASOCIA_A_EXAMEN" Type="BadApp.Models.Store.SE_ASOCIA_A_EXAMEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXAMEN">
+        <PropertyRef Name="ID_EXAMEN" />
+      </Principal>
+      <Dependent Role="SE_ASOCIA_A_EXAMEN">
+        <PropertyRef Name="ID_EXAMEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPEDIENTE_COD_PACIENTE">
+    <End Role="PACIENTE" Type="BadApp.Models.Store.PACIENTE" Multiplicity="1" />
+    <End Role="EXPEDIENTE" Type="BadApp.Models.Store.EXPEDIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="COD_PAC" />
+      </Principal>
+      <Dependent Role="EXPEDIENTE">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="COD_PAC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LABORATORISTA_PERSONA">
+    <End Role="PERSONA" Type="BadApp.Models.Store.PERSONA" Multiplicity="1" />
+    <End Role="LABORATORISTA" Type="BadApp.Models.Store.LABORATORISTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="ID_PERSONA" />
+      </Principal>
+      <Dependent Role="LABORATORISTA">
+        <PropertyRef Name="ID_PERSONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MUNICIPIO_DEPTO">
+    <End Role="DEPARTAMENTO" Type="BadApp.Models.Store.DEPARTAMENTO" Multiplicity="1" />
+    <End Role="MUNICIPIO" Type="BadApp.Models.Store.MUNICIPIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTAMENTO">
+        <PropertyRef Name="ID_DEPTO" />
+      </Principal>
+      <Dependent Role="MUNICIPIO">
+        <PropertyRef Name="ID_DEPTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACIENTE_PERSONA">
+    <End Role="PERSONA" Type="BadApp.Models.Store.PERSONA" Multiplicity="1" />
+    <End Role="PACIENTE" Type="BadApp.Models.Store.PACIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="ID_PERSONA" />
+      </Principal>
+      <Dependent Role="PACIENTE">
+        <PropertyRef Name="ID_PERSONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONA_MUNICIPIO">
+    <End Role="MUNICIPIO" Type="BadApp.Models.Store.MUNICIPIO" Multiplicity="1" />
+    <End Role="PERSONA" Type="BadApp.Models.Store.PERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MUNICIPIO">
+        <PropertyRef Name="ID_DEPTO" />
+        <PropertyRef Name="ID_MUNICIPIO" />
+      </Principal>
+      <Dependent Role="PERSONA">
+        <PropertyRef Name="ID_DEPTO" />
+        <PropertyRef Name="ID_MUNICIPIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCE_CONSULTA">
+    <End Role="CONSULTA" Type="BadApp.Models.Store.CONSULTA" Multiplicity="1" />
+    <End Role="PRODUCE" Type="BadApp.Models.Store.PRODUCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONSULTA">
+        <PropertyRef Name="ID_CONSULTA" />
+      </Principal>
+      <Dependent Role="PRODUCE">
+        <PropertyRef Name="ID_CONSULTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCE_DIAGNOSTICO">
+    <End Role="DIAGNOSTICO" Type="BadApp.Models.Store.DIAGNOSTICO" Multiplicity="1" />
+    <End Role="PRODUCE" Type="BadApp.Models.Store.PRODUCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIAGNOSTICO">
+        <PropertyRef Name="COD_DIAGNOSTICO" />
+      </Principal>
+      <Dependent Role="PRODUCE">
+        <PropertyRef Name="COD_DIAGNOSTICO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REFERENCIA_EXPEDIENTE">
+    <End Role="EXPEDIENTE" Type="BadApp.Models.Store.EXPEDIENTE" Multiplicity="1" />
+    <End Role="REFERENCIA" Type="BadApp.Models.Store.REFERENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXPEDIENTE">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Principal>
+      <Dependent Role="REFERENCIA">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULTADO_EXA_EXAMEN">
+    <End Role="EXAMEN" Type="BadApp.Models.Store.EXAMEN" Multiplicity="1" />
+    <End Role="RESULTADO_EXAMEN" Type="BadApp.Models.Store.RESULTADO_EXAMEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXAMEN">
+        <PropertyRef Name="ID_EXAMEN" />
+      </Principal>
+      <Dependent Role="RESULTADO_EXAMEN">
+        <PropertyRef Name="ID_EXAMEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULTADO_LABORATORISTA">
+    <End Role="LABORATORISTA" Type="BadApp.Models.Store.LABORATORISTA" Multiplicity="1" />
+    <End Role="RESULTADO_EXAMEN" Type="BadApp.Models.Store.RESULTADO_EXAMEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LABORATORISTA">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_LAB" />
+      </Principal>
+      <Dependent Role="RESULTADO_EXAMEN">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_LAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIGNOS_VITALES">
+    <End Role="EXPEDIENTE" Type="BadApp.Models.Store.EXPEDIENTE" Multiplicity="1" />
+    <End Role="SIGNOS_VITALES" Type="BadApp.Models.Store.SIGNOS_VITALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXPEDIENTE">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Principal>
+      <Dependent Role="SIGNOS_VITALES">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO_PERSONA">
+    <End Role="PERSONA" Type="BadApp.Models.Store.PERSONA" Multiplicity="1" />
+    <End Role="TELEFONO" Type="BadApp.Models.Store.TELEFONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="ID_PERSONA" />
+      </Principal>
+      <Dependent Role="TELEFONO">
+        <PropertyRef Name="ID_PERSONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRABAJA_DOC">
+    <End Role="DOCTOR" Type="BadApp.Models.Store.DOCTOR" Multiplicity="1" />
+    <End Role="TRABAJA" Type="BadApp.Models.Store.TRABAJA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_DOC" />
+      </Principal>
+      <Dependent Role="TRABAJA">
+        <PropertyRef Name="ID_PERSONA" />
+        <PropertyRef Name="JVPM_DOC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRABAJA_HORARIO">
+    <End Role="HORARIO" Type="BadApp.Models.Store.HORARIO" Multiplicity="1" />
+    <End Role="TRABAJA" Type="BadApp.Models.Store.TRABAJA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HORARIO">
+        <PropertyRef Name="ID_HORARIO" />
+      </Principal>
+      <Dependent Role="TRABAJA">
+        <PropertyRef Name="ID_HORARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tratamiento">
+    <End Role="TRATAMIENTO" Type="BadApp.Models.Store.TRATAMIENTO" Multiplicity="1" />
+    <End Role="DIAGNOSTICO_TRATAMIENTO" Type="BadApp.Models.Store.DIAGNOSTICO_TRATAMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRATAMIENTO">
+        <PropertyRef Name="ID_TRATAMIENTO" />
+      </Principal>
+      <Dependent Role="DIAGNOSTICO_TRATAMIENTO">
+        <PropertyRef Name="ID_TRATAMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRATAMIENTO_MEDICAMIENTO">
+    <End Role="MEDICAMENTO" Type="BadApp.Models.Store.MEDICAMENTO" Multiplicity="1" />
+    <End Role="TRATAMIENTO_MEDICAMENTO" Type="BadApp.Models.Store.TRATAMIENTO_MEDICAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAMENTO">
+        <PropertyRef Name="ID_MEDICAMENTO" />
+      </Principal>
+      <Dependent Role="TRATAMIENTO_MEDICAMENTO">
+        <PropertyRef Name="ID_MEDICAMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRATAMIENTO_TRAT">
+    <End Role="TRATAMIENTO" Type="BadApp.Models.Store.TRATAMIENTO" Multiplicity="1" />
+    <End Role="TRATAMIENTO_MEDICAMENTO" Type="BadApp.Models.Store.TRATAMIENTO_MEDICAMENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRATAMIENTO">
+        <PropertyRef Name="ID_TRATAMIENTO" />
+      </Principal>
+      <Dependent Role="TRATAMIENTO_MEDICAMENTO">
+        <PropertyRef Name="ID_TRATAMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_ROL">
+    <End Role="CATALOGO_ROLES" Type="BadApp.Models.Store.CATALOGO_ROLES" Multiplicity="1" />
+    <End Role="USUARIO" Type="BadApp.Models.Store.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATALOGO_ROLES">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CONSULTA_EXPEDIENTE">
+    <End Role="EXPEDIENTE" Type="BadApp.Models.Store.EXPEDIENTE" Multiplicity="1" />
+    <End Role="CONSULTA" Type="BadApp.Models.Store.CONSULTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXPEDIENTE">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Principal>
+      <Dependent Role="CONSULTA">
+        <PropertyRef Name="NUM_EXPEDIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="delete_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_depto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_doctor_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jvpm_doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_municipio_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_municipio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_persona_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_PERSONA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_TELEFONO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insert_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nomb_depto" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insert_doctor_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_persona" Type="int" Mode="In" />
+    <Parameter Name="jvpm_doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insert_municipio_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_depto" Type="int" Mode="In" />
+    <Parameter Name="nombre_municipio" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insert_persona_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PRIMER_NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="SEGUNDO_NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="PRIMER_APELLIDO" Type="varchar" Mode="In" />
+    <Parameter Name="SEGUNDO_APELLIDO" Type="varchar" Mode="In" />
+    <Parameter Name="DUI" Type="char" Mode="In" />
+    <Parameter Name="NIT" Type="char" Mode="In" />
+    <Parameter Name="SEXO" Type="char" Mode="In" />
+    <Parameter Name="PROFESION" Type="varchar" Mode="In" />
+    <Parameter Name="FECHA_NAC" Type="datetime" Mode="In" />
+    <Parameter Name="DUI_ENCARGADO" Type="char" Mode="In" />
+    <Parameter Name="ID_DEPTO" Type="int" Mode="In" />
+    <Parameter Name="ID_MUNICIPIO" Type="int" Mode="In" />
+    <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insert_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TELEFONO_PERSONAL" Type="int" Mode="In" />
+    <Parameter Name="TELEFONO_CASA" Type="int" Mode="In" />
+    <Parameter Name="TELEFONO_ALTERNATIVO" Type="int" Mode="In" />
+    <Parameter Name="ID_PERSONA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="update_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nomb_depto" Type="varchar" Mode="In" />
+    <Parameter Name="id_depto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="update_doctor_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_persona" Type="int" Mode="In" />
+    <Parameter Name="jvpm_doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="update_municipio_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_municipio" Type="int" Mode="In" />
+    <Parameter Name="nombre_municipio" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="update_persona_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_PERSONA" Type="int" Mode="In" />
+    <Parameter Name="PRIMER_NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="SEGUNDO_NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="PRIMER_APELLIDO" Type="varchar" Mode="In" />
+    <Parameter Name="SEGUNDO_APELLIDO" Type="varchar" Mode="In" />
+    <Parameter Name="DUI" Type="char" Mode="In" />
+    <Parameter Name="NIT" Type="char" Mode="In" />
+    <Parameter Name="SEXO" Type="char" Mode="In" />
+    <Parameter Name="PROFESION" Type="varchar" Mode="In" />
+    <Parameter Name="FECHA_NAC" Type="datetime" Mode="In" />
+    <Parameter Name="DUI_ENCARGADO" Type="char" Mode="In" />
+    <Parameter Name="ID_DEPTO" Type="int" Mode="In" />
+    <Parameter Name="ID_MUNICIPIO" Type="int" Mode="In" />
+    <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="update_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TELEFONO_PERSONAL" Type="int" Mode="In" />
+    <Parameter Name="TELEFONO_CASA" Type="int" Mode="In" />
+    <Parameter Name="TELEFONO_ALTERNATIVO" Type="int" Mode="In" />
+    <Parameter Name="ID_TELEFONO" Type="int" Mode="In" />
+  </Function>
+</Schema>

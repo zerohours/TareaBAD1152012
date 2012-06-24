@@ -1,0 +1,30 @@
+﻿@model TareaBAD1152012.Models.Doctor
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Doctor</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JVPM_DOC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.JVPM_DOC)
+            @Html.ValidationMessageFor(model => model.JVPM_DOC)
+        </div>
+
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

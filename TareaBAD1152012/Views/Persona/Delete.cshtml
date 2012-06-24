@@ -1,0 +1,60 @@
+﻿@model TareaBAD1152012.Models.Persona
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Persona</legend>
+
+    <div class="display-label">PRIMER_NOMBRE</div>
+    <div class="display-field">@Model.PRIMER_NOMBRE</div>
+
+    <div class="display-label">SEGUNDO_NOMBRE</div>
+    <div class="display-field">@Model.SEGUNDO_NOMBRE</div>
+
+    <div class="display-label">PRIMER_APELLIDO</div>
+    <div class="display-field">@Model.PRIMER_APELLIDO</div>
+
+    <div class="display-label">SEGUNDO_APELLIDO</div>
+    <div class="display-field">@Model.SEGUNDO_APELLIDO</div>
+
+    <div class="display-label">DUI</div>
+    <div class="display-field">@Model.DUI</div>
+
+    <div class="display-label">NIT</div>
+    <div class="display-field">@Model.NIT</div>
+
+    <div class="display-label">SEXO</div>
+    <div class="display-field">@Model.SEXO</div>
+
+    <div class="display-label">PROFESION</div>
+    <div class="display-field">@Model.PROFESION</div>
+
+    <div class="display-label">FECHA_NAC</div>
+    <div class="display-field">@String.Format("{0:g}", Model.FECHA_NAC)</div>
+
+    <div class="display-label">DUI_ENCARGADO</div>
+    <div class="display-field">@Model.DUI_ENCARGADO</div>
+
+    <div class="display-label">ID_DEPTO</div>
+    <div class="display-field">@Model.ID_DEPTO</div>
+
+    <div class="display-label">ID_MUNICIPIO</div>
+    <div class="display-field">@Model.ID_MUNICIPIO</div>
+
+    <div class="display-label">DIRECCION</div>
+    <div class="display-field">@Model.DIRECCION</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

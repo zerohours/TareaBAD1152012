@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Persona>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Personas</h2>
+
+<p>
+    Muestra un listado de todas las personas en el sistema.
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            DUI
+        </th>
+        <th>
+            NIT
+        </th>
+        <th>
+            Sexo
+        </th>
+        <th>
+            Profesión
+        </th>
+        <th>
+            Fecha Nacimiento
+        </th>
+        <th>
+            DUI_ENCARGADO
+        </th>
+        <th>
+            Municipo
+        </th>
+        <th>
+            Dirección
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.PRIMER_NOMBRE @item.SEGUNDO_NOMBRE @item.PRIMER_APELLIDO @item.SEGUNDO_APELLIDO
+        </td>
+        <td>
+            @item.DUI
+        </td>
+        <td>
+            @item.NIT
+        </td>
+        <td>
+            @item.SEXO
+        </td>
+        <td>
+            @item.PROFESION
+        </td>
+        <td>
+            @String.Format("{0:g}", item.FECHA_NAC)
+        </td>
+        <td>
+            @item.DUI_ENCARGADO
+        </td>
+        <td>
+            @item.MUNICIPIO.NOMBRE_MUNICIPIO
+        </td>
+        <td>
+            @item.DIRECCION
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_PERSONA })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_PERSONA })
+        </td>
+    </tr>
+}
+
+</table>
+

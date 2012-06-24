@@ -17,6 +17,8 @@ namespace TareaBAD1152012.Controllers
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 
+        private BadDBEntities _db = new BadDBEntities();
+
         protected override void Initialize(RequestContext requestContext)
         {
             if (FormsService == null) { FormsService = new FormsAuthenticationService(); }
@@ -39,21 +41,44 @@ namespace TareaBAD1152012.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (MembershipService.ValidateUser(model.UserName, model.Password))
+                // Seleccionamos de la base de datos
+                var user = from m in _db.UsuarioSet where m.NOMBRE_USUARIO == model.UserName select m;
+
+                // Verificamos que existan registros
+                if (user.ToList().Count > 0)
                 {
-                    FormsService.SignIn(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl))
+                    // Seleccionamos unicamente el primer dato
+                    var Login = (from m in _db.UsuarioSet
+                                    where m.NOMBRE_USUARIO == model.UserName
+                                    select m).FirstOrDefault();
+
+                    if (Login.NOMBRE_USUARIO == model.UserName && Login.CONTRASENA == model.Password)
                     {
-                        return Redirect(returnUrl);
+
+                        FormsService.SignIn(model.UserName, model.RememberMe);
+                        if (Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            if(Login.ID_ROL == 1)
+                                return RedirectToAction("Index", "Admin");
+
+                            if (Login.ID_ROL == 2)
+                                return RedirectToAction("Index", "Home");
+
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        ModelState.AddModelError("", "El nombre de usuario o contraseña es incorrecto.");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "El nombre de usuario o contraseña es incorrecto.");
                 }
             }
 

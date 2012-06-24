@@ -1,0 +1,131 @@
+﻿@model TareaBAD1152012.Models.Persona
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Persona</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRIMER_NOMBRE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRIMER_NOMBRE)
+            @Html.ValidationMessageFor(model => model.PRIMER_NOMBRE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SEGUNDO_NOMBRE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SEGUNDO_NOMBRE)
+            @Html.ValidationMessageFor(model => model.SEGUNDO_NOMBRE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRIMER_APELLIDO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRIMER_APELLIDO)
+            @Html.ValidationMessageFor(model => model.PRIMER_APELLIDO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SEGUNDO_APELLIDO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SEGUNDO_APELLIDO)
+            @Html.ValidationMessageFor(model => model.SEGUNDO_APELLIDO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DIRECCION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DIRECCION)
+            @Html.ValidationMessageFor(model => model.DIRECCION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DUI)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DUI)
+            @Html.ValidationMessageFor(model => model.DUI)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NIT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NIT)
+            @Html.ValidationMessageFor(model => model.NIT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SEXO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SEXO)
+            @Html.ValidationMessageFor(model => model.SEXO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PROFESION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PROFESION)
+            @Html.ValidationMessageFor(model => model.PROFESION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FECHA_NAC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FECHA_NAC)
+            @Html.ValidationMessageFor(model => model.FECHA_NAC)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DUI_ENCARGADO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DUI_ENCARGADO)
+            @Html.ValidationMessageFor(model => model.DUI_ENCARGADO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_DEPTO)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ID_DEPTO")
+            @Html.ValidationMessageFor(model => model.ID_DEPTO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_MUNICIPIO)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ID_MUNICIPIO")
+            @Html.ValidationMessageFor(model => model.ID_DEPTO)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

@@ -1,0 +1,24 @@
+﻿@model TareaBAD1152012.Models.Departamento
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Desea eliminar el siguiente elemento?</h3>
+<fieldset>
+    <legend>Departamento</legend>
+
+    <div class="display-label">Nombre del departamento</div>
+    <div class="display-field">@Model.NOMBRE_DEPTO</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

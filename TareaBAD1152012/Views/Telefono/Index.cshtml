@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Telefono>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Persona
+        </th>
+        <th>
+            Telefono Personal
+        </th>
+        <th>
+            Telefono Casa
+        </th>
+        <th>
+            Telefono Alternativo
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.PERSONA.PRIMER_NOMBRE @item.PERSONA.SEGUNDO_NOMBRE @item.PERSONA.PRIMER_APELLIDO @item.PERSONA.SEGUNDO_APELLIDO
+        </td>
+        <td>
+            @item.TELEFONO_PERSONAL
+        </td>
+        <td>
+            @item.TELEFONO_CASA
+        </td>
+        <td>
+            @item.TELEFONO_ALTERNATIVO
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_TELEFONO })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_TELEFONO })
+        </td>
+    </tr>
+}
+
+</table>
+

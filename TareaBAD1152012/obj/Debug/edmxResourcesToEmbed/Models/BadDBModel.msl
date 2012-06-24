@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BadAppModelsStoreContainer" CdmEntityContainer="BadDBEntities">
+    <EntitySetMapping Name="AntecedentesPersonalesSet">
+      <EntityTypeMapping TypeName="BadApp.Models.AntecedentesPersonales">
+        <MappingFragment StoreEntitySet="ANTECEDENTES_PERSONALES">
+          <ScalarProperty Name="ID_ANTECEDENTES" ColumnName="ID_ANTECEDENTES" />
+          <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
+          <ScalarProperty Name="FUMA" ColumnName="FUMA" />
+          <ScalarProperty Name="ALCOHOLICO" ColumnName="ALCOHOLICO" />
+          <ScalarProperty Name="ANTIDEPRESIVO" ColumnName="ANTIDEPRESIVO" />
+          <ScalarProperty Name="HABITOSALIMENTICIOS" ColumnName="HABITOSALIMENTICIOS" />
+          <ScalarProperty Name="CONDICION_DE_VIDA" ColumnName="CONDICION_DE_VIDA" />
+          <ScalarProperty Name="ANTECEDENTES_HEREDO_FAMILIARES" ColumnName="ANTECEDENTES_HEREDO_FAMILIARES" />
+          <ScalarProperty Name="OTROS" ColumnName="OTROS" />
+          <ScalarProperty Name="PERSONALES_PATOLOGICOS" ColumnName="PERSONALES_PATOLOGICOS" />
+          <ScalarProperty Name="DEPORTES" ColumnName="DEPORTES" />
+          <ScalarProperty Name="INMUNIZACIONES" ColumnName="INMUNIZACIONES" />
+          <ScalarProperty Name="TOXICOMANIAS" ColumnName="TOXICOMANIAS" />
+          <ScalarProperty Name="GINECO_OBSTETRICOS" ColumnName="GINECO_OBSTETRICOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArchivoSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Archivo">
+        <MappingFragment StoreEntitySet="ARCHIVO">
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="COD_EMPLEADO" ColumnName="COD_EMPLEADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatalogoRolesSet">
+      <EntityTypeMapping TypeName="BadApp.Models.CatalogoRoles">
+        <MappingFragment StoreEntitySet="CATALOGO_ROLES">
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="NOMBRE_ROL" ColumnName="NOMBRE_ROL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CitaSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Cita">
+        <MappingFragment StoreEntitySet="CITA">
+          <ScalarProperty Name="ID_CITA" ColumnName="ID_CITA" />
+          <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
+          <ScalarProperty Name="COD_EMPLEADO" ColumnName="COD_EMPLEADO" />
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="JVPM_DOC" ColumnName="JVPM_DOC" />
+          <ScalarProperty Name="ID_HORA_CITA" ColumnName="ID_HORA_CITA" />
+          <ScalarProperty Name="FECHA_CITA" ColumnName="FECHA_CITA" />
+          <ScalarProperty Name="REALIZADA" ColumnName="REALIZADA" />
+          <ScalarProperty Name="ARCH_ID_PERSONA" ColumnName="ARCH_ID_PERSONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsultaSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Consulta">
+        <MappingFragment StoreEntitySet="CONSULTA">
+          <ScalarProperty Name="ID_CONSULTA" ColumnName="ID_CONSULTA" />
+          <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
+          <ScalarProperty Name="SINTOMAS" ColumnName="SINTOMAS" />
+          <ScalarProperty Name="FECHA_CONSULTA" ColumnName="FECHA_CONSULTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepartamentoSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Departamento">
+        <MappingFragment StoreEntitySet="DEPARTAMENTO">
+          <ScalarProperty Name="ID_DEPTO" ColumnName="ID_DEPTO" />
+          <ScalarProperty Name="NOMBRE_DEPTO" ColumnName="NOMBRE_DEPTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Departamento">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_departamento_pr">
+            <ScalarProperty Name="NOMBRE_DEPTO" ParameterName="nomb_depto" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_departamento_pr">
+            <ScalarProperty Name="ID_DEPTO" ParameterName="id_depto" Version="Current" />
+            <ScalarProperty Name="NOMBRE_DEPTO" ParameterName="nomb_depto" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_departamento_pr">
+            <ScalarProperty Name="ID_DEPTO" ParameterName="id_depto" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiagnosticoSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Diagnostico">
+        <MappingFragment StoreEntitySet="DIAGNOSTICO">
+          <ScalarProperty Name="COD_DIAGNOSTICO" ColumnName="COD_DIAGNOSTICO" />
+          <ScalarProperty Name="NOMBRE_DIAGNOSTICO" ColumnName="NOMBRE_DIAGNOSTICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Doctor">
+        <MappingFragment StoreEntitySet="DOCTOR">
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="JVPM_DOC" ColumnName="JVPM_DOC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Doctor">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_doctor_pr">
+            <ScalarProperty Name="JVPM_DOC" ParameterName="jvpm_doc" />
+            <ScalarProperty Name="ID_PERSONA" ParameterName="id_persona" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_doctor_pr">
+            <ScalarProperty Name="JVPM_DOC" ParameterName="jvpm_doc" Version="Current" />
+            <ScalarProperty Name="ID_PERSONA" ParameterName="id_persona" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_doctor_pr">
+            <ScalarProperty Name="JVPM_DOC" ParameterName="jvpm_doc" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EspecialidadSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Especialidad">
+        <MappingFragment StoreEntitySet="ESPECIALIDAD">
+          <ScalarProperty Name="ID_ESPECIALIDAD" ColumnName="ID_ESPECIALIDAD" />
+          <ScalarProperty Name="NOMBRE_ESP" ColumnName="NOMBRE_ESP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamenSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Examen">
+        <MappingFragment StoreEntitySet="EXAMEN">
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="NOMBRE_EXAMEN" ColumnName="NOMBRE_EXAMEN" />
+          <ScalarProperty Name="TIPO_EXAMEN" ColumnName="TIPO_EXAMEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpedienteSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Expediente">
+        <MappingFragment StoreEntitySet="EXPEDIENTE">
+          <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="COD_PAC" ColumnName="COD_PAC" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoraCitaSet">
+      <EntityTypeMapping TypeName="BadApp.Models.HoraCita">
+        <MappingFragment StoreEntitySet="HORA_CITA">
+          <ScalarProperty Name="ID_HORA_CITA" ColumnName="ID_HORA_CITA" />
+          <ScalarProperty Name="HORA_INICIO" ColumnName="HORA_INICIO" />
+          <ScalarProperty Name="HORA_FIN" ColumnName="HORA_FIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HorarioSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Horario">
+        <MappingFragment StoreEntitySet="HORARIO">
+          <ScalarProperty Name="HORA_SALIDA" ColumnName="HORA_SALIDA" />
+          <ScalarProperty Name="HORA_ENTRADA" ColumnName="HORA_ENTRADA" />
+          <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+          <ScalarProperty Name="DIA" ColumnName="DIA" />
+          <ScalarProperty Name="DISPONIBILIDAD" ColumnName="DISPONIBILIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LaboratoristaSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Laboratorista">
+        <MappingFragment StoreEntitySet="LABORATORISTA">
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="JVPM_LAB" ColumnName="JVPM_LAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicamentoSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Medicamento">
+        <MappingFragment StoreEntitySet="MEDICAMENTO">
+          <ScalarProperty Name="ID_MEDICAMENTO" ColumnName="ID_MEDICAMENTO" />
+          <ScalarProperty Name="NOMBRE_MEDICAMENTO" ColumnName="NOMBRE_MEDICAMENTO" />
+          <ScalarProperty Name="VIA_ADMINISTRACION" ColumnName="VIA_ADMINISTRACION" />
+          <ScalarProperty Name="CONTRAINDICACION" ColumnName="CONTRAINDICACION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MunicipioSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Municipio">
+        <MappingFragment StoreEntitySet="MUNICIPIO">
+          <ScalarProperty Name="ID_DEPTO" ColumnName="ID_DEPTO" />
+          <ScalarProperty Name="ID_MUNICIPIO" ColumnName="ID_MUNICIPIO" />
+          <ScalarProperty Name="NOMBRE_MUNICIPIO" ColumnName="NOMBRE_MUNICIPIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Municipio">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_municipio_pr">
+            <ScalarProperty Name="NOMBRE_MUNICIPIO" ParameterName="nombre_municipio" />
+            <ScalarProperty Name="ID_DEPTO" ParameterName="id_depto" />
+          </InsertFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_municipio_pr">
+            <ScalarProperty Name="ID_MUNICIPIO" ParameterName="ID_municipio" />
+          </DeleteFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_municipio_pr">
+            <ScalarProperty Name="NOMBRE_MUNICIPIO" ParameterName="nombre_municipio" Version="Current" />
+            <ScalarProperty Name="ID_MUNICIPIO" ParameterName="id_municipio" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PacienteSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Paciente">
+        <MappingFragment StoreEntitySet="PACIENTE">
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="COD_PAC" ColumnName="COD_PAC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonaSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Persona">
+        <MappingFragment StoreEntitySet="PERSONA">
+          <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
+          <ScalarProperty Name="SEGUNDO_NOMBRE" ColumnName="SEGUNDO_NOMBRE" />
+          <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
+          <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
+          <ScalarProperty Name="DUI" ColumnName="DUI" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="PROFESION" ColumnName="PROFESION" />
+          <ScalarProperty Name="FECHA_NAC" ColumnName="FECHA_NAC" />
+          <ScalarProperty Name="DUI_ENCARGADO" ColumnName="DUI_ENCARGADO" />
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="ID_DEPTO" ColumnName="ID_DEPTO" />
+          <ScalarProperty Name="ID_MUNICIPIO" ColumnName="ID_MUNICIPIO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Persona">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_persona_pr">
+            <ScalarProperty Name="DIRECCION" ParameterName="DIRECCION" />
+            <ScalarProperty Name="ID_MUNICIPIO" ParameterName="ID_MUNICIPIO" />
+            <ScalarProperty Name="ID_DEPTO" ParameterName="ID_DEPTO" />
+            <ScalarProperty Name="DUI_ENCARGADO" ParameterName="DUI_ENCARGADO" />
+            <ScalarProperty Name="FECHA_NAC" ParameterName="FECHA_NAC" />
+            <ScalarProperty Name="PROFESION" ParameterName="PROFESION" />
+            <ScalarProperty Name="SEXO" ParameterName="SEXO" />
+            <ScalarProperty Name="NIT" ParameterName="NIT" />
+            <ScalarProperty Name="DUI" ParameterName="DUI" />
+            <ScalarProperty Name="SEGUNDO_APELLIDO" ParameterName="SEGUNDO_APELLIDO" />
+            <ScalarProperty Name="PRIMER_APELLIDO" ParameterName="PRIMER_APELLIDO" />
+            <ScalarProperty Name="SEGUNDO_NOMBRE" ParameterName="SEGUNDO_NOMBRE" />
+            <ScalarProperty Name="PRIMER_NOMBRE" ParameterName="PRIMER_NOMBRE" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_persona_pr">
+            <ScalarProperty Name="DIRECCION" ParameterName="DIRECCION" Version="Current" />
+            <ScalarProperty Name="ID_MUNICIPIO" ParameterName="ID_MUNICIPIO" Version="Current" />
+            <ScalarProperty Name="ID_DEPTO" ParameterName="ID_DEPTO" Version="Current" />
+            <ScalarProperty Name="DUI_ENCARGADO" ParameterName="DUI_ENCARGADO" Version="Current" />
+            <ScalarProperty Name="FECHA_NAC" ParameterName="FECHA_NAC" Version="Current" />
+            <ScalarProperty Name="PROFESION" ParameterName="PROFESION" Version="Current" />
+            <ScalarProperty Name="SEXO" ParameterName="SEXO" Version="Current" />
+            <ScalarProperty Name="NIT" ParameterName="NIT" Version="Current" />
+            <ScalarProperty Name="DUI" ParameterName="DUI" Version="Current" />
+            <ScalarProperty Name="SEGUNDO_APELLIDO" ParameterName="SEGUNDO_APELLIDO" Version="Current" />
+            <ScalarProperty Name="PRIMER_APELLIDO" ParameterName="PRIMER_APELLIDO" Version="Current" />
+            <ScalarProperty Name="SEGUNDO_NOMBRE" ParameterName="SEGUNDO_NOMBRE" Version="Current" />
+            <ScalarProperty Name="PRIMER_NOMBRE" ParameterName="PRIMER_NOMBRE" Version="Current" />
+            <ScalarProperty Name="ID_PERSONA" ParameterName="ID_PERSONA" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_persona_pr">
+            <ScalarProperty Name="ID_PERSONA" ParameterName="ID_PERSONA" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReferenciaSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Referencia">
+        <MappingFragment StoreEntitySet="REFERENCIA">
+          <ScalarProperty Name="NUM_REFERENCIA" ColumnName="NUM_REFERENCIA" />
+          <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
+          <ScalarProperty Name="DIAGNOSTICO_DE" ColumnName="DIAGNOSTICO_DE" />
+          <ScalarProperty Name="REFERIDO_A" ColumnName="REFERIDO_A" />
+          <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+          <ScalarProperty Name="MEDICO_QUE_REFIERE" ColumnName="MEDICO_QUE_REFIERE" />
+          <ScalarProperty Name="HOSPITAL" ColumnName="HOSPITAL" />
+          <ScalarProperty Name="JVPM_DOCTOR" ColumnName="JVPM_DOCTOR" />
+          <ScalarProperty Name="FECHA_REFERENCIA" ColumnName="FECHA_REFERENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResultadoExamenSet">
+      <EntityTypeMapping TypeName="BadApp.Models.ResultadoExamen">
+        <MappingFragment StoreEntitySet="RESULTADO_EXAMEN">
+          <ScalarProperty Name="ID_RESULTADO" ColumnName="ID_RESULTADO" />
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+          <ScalarProperty Name="JVPM_LAB" ColumnName="JVPM_LAB" />
+          <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+          <ScalarProperty Name="OBSERVACION_1" ColumnName="OBSERVACION_1" />
+          <ScalarProperty Name="OBSERVACION_2" ColumnName="OBSERVACION_2" />
+          <ScalarProperty Name="OBSERVACION_3" ColumnName="OBSERVACION_3" />
+          <ScalarProperty Name="OBSERVACION_4" ColumnName="OBSERVACION_4" />
+          <ScalarProperty Name="OBSERVACION_5" ColumnName="OBSERVACION_5" />
+          <ScalarProperty Name="OBSERVACION_6" ColumnName="OBSERVACION_6" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SignosVitalesSet">
+      <EntityTypeMapping TypeName="BadApp.Models.SignosVitales">
+        <MappingFragment StoreEntitySet="SIGNOS_VITALES">
+          <ScalarProperty Name="ID_SIGNOSV" ColumnName="ID_SIGNOSV" />
+          <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
+          <ScalarProperty Name="FRECUENCIA_CARDIACA" ColumnName="FRECUENCIA_CARDIACA" />
+          <ScalarProperty Name="TEMPERATURA_CORPORAL" ColumnName="TEMPERATURA_CORPORAL" />
+          <ScalarProperty Name="PESO" ColumnName="PESO" />
+          <ScalarProperty Name="PRESION_ARTERIAL" ColumnName="PRESION_ARTERIAL" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="FRECUENCIA_RESPIRATORIA" ColumnName="FRECUENCIA_RESPIRATORIA" />
+          <ScalarProperty Name="OTROS_SIGNOS" ColumnName="OTROS_SIGNOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TelefonoSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Telefono">
+        <MappingFragment StoreEntitySet="TELEFONO">
+          <ScalarProperty Name="TELEFONO_PERSONAL" ColumnName="TELEFONO_PERSONAL" />
+          <ScalarProperty Name="TELEFONO_CASA" ColumnName="TELEFONO_CASA" />
+          <ScalarProperty Name="TELEFONO_ALTERNATIVO" ColumnName="TELEFONO_ALTERNATIVO" />
+          <ScalarProperty Name="ID_TELEFONO" ColumnName="ID_TELEFONO" />
+          <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.Telefono">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_telefono_pr">
+            <ScalarProperty Name="ID_PERSONA" ParameterName="ID_PERSONA" />
+            <ScalarProperty Name="TELEFONO_ALTERNATIVO" ParameterName="TELEFONO_ALTERNATIVO" />
+            <ScalarProperty Name="TELEFONO_CASA" ParameterName="TELEFONO_CASA" />
+            <ScalarProperty Name="TELEFONO_PERSONAL" ParameterName="TELEFONO_PERSONAL" />
+          </InsertFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_telefono_pr">
+            <ScalarProperty Name="ID_TELEFONO" ParameterName="ID_TELEFONO" />
+          </DeleteFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_telefono_pr">
+            <ScalarProperty Name="ID_TELEFONO" ParameterName="ID_TELEFONO" Version="Current" />
+            <ScalarProperty Name="TELEFONO_ALTERNATIVO" ParameterName="TELEFONO_ALTERNATIVO" Version="Current" />
+            <ScalarProperty Name="TELEFONO_CASA" ParameterName="TELEFONO_CASA" Version="Current" />
+            <ScalarProperty Name="TELEFONO_PERSONAL" ParameterName="TELEFONO_PERSONAL" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TratamientoSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Tratamiento">
+        <MappingFragment StoreEntitySet="TRATAMIENTO">
+          <ScalarProperty Name="ID_TRATAMIENTO" ColumnName="ID_TRATAMIENTO" />
+          <ScalarProperty Name="DOSIS" ColumnName="DOSIS" />
+          <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="DETALLE_TRATAMIENTO" ColumnName="DETALLE_TRATAMIENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioSet">
+      <EntityTypeMapping TypeName="BadApp.Models.Usuario">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+          <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+          <ScalarProperty Name="ESTADO_USUARIO" ColumnName="ESTADO_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DIAGNOSTICO_TRATAMIENTO" TypeName="BadApp.Models.DIAGNOSTICO_TRATAMIENTO" StoreEntitySet="DIAGNOSTICO_TRATAMIENTO">
+      <EndProperty Name="DIAGNOSTICO">
+        <ScalarProperty Name="COD_DIAGNOSTICO" ColumnName="COD_DIAGNOSTICO" />
+      </EndProperty>
+      <EndProperty Name="TRATAMIENTO">
+        <ScalarProperty Name="ID_TRATAMIENTO" ColumnName="ID_TRATAMIENTO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DOCTOR_ESPECIALIDAD" TypeName="BadApp.Models.DOCTOR_ESPECIALIDAD" StoreEntitySet="DOCTOR_ESPECIALIDAD">
+      <EndProperty Name="DOCTOR">
+        <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+        <ScalarProperty Name="JVPM_DOC" ColumnName="JVPM_DOC" />
+      </EndProperty>
+      <EndProperty Name="ESPECIALIDAD">
+        <ScalarProperty Name="ID_ESPECIALIDAD" ColumnName="ID_ESPECIALIDAD" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PRODUCE" TypeName="BadApp.Models.PRODUCE" StoreEntitySet="PRODUCE">
+      <EndProperty Name="CONSULTA">
+        <ScalarProperty Name="ID_CONSULTA" ColumnName="ID_CONSULTA" />
+      </EndProperty>
+      <EndProperty Name="DIAGNOSTICO">
+        <ScalarProperty Name="COD_DIAGNOSTICO" ColumnName="COD_DIAGNOSTICO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SE_ASOCIA_A_EXAMEN" TypeName="BadApp.Models.SE_ASOCIA_A_EXAMEN" StoreEntitySet="SE_ASOCIA_A_EXAMEN">
+      <EndProperty Name="DIAGNOSTICO">
+        <ScalarProperty Name="COD_DIAGNOSTICO" ColumnName="COD_DIAGNOSTICO" />
+      </EndProperty>
+      <EndProperty Name="EXAMEN">
+        <ScalarProperty Name="ID_EXAMEN" ColumnName="ID_EXAMEN" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TRABAJA" TypeName="BadApp.Models.TRABAJA" StoreEntitySet="TRABAJA">
+      <EndProperty Name="DOCTOR">
+        <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
+        <ScalarProperty Name="JVPM_DOC" ColumnName="JVPM_DOC" />
+      </EndProperty>
+      <EndProperty Name="HORARIO">
+        <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TRATAMIENTO_MEDICAMENTO" TypeName="BadApp.Models.TRATAMIENTO_MEDICAMENTO" StoreEntitySet="TRATAMIENTO_MEDICAMENTO">
+      <EndProperty Name="MEDICAMENTO">
+        <ScalarProperty Name="ID_MEDICAMENTO" ColumnName="ID_MEDICAMENTO" />
+      </EndProperty>
+      <EndProperty Name="TRATAMIENTO">
+        <ScalarProperty Name="ID_TRATAMIENTO" ColumnName="ID_TRATAMIENTO" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

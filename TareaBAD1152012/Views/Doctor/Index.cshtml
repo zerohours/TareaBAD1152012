@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Doctor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Doctores</h2>
+
+<p>
+    Muestra un listado de todas los doctores en el sistema.
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            JVPM
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.PERSONA.PRIMER_NOMBRE @item.PERSONA.SEGUNDO_NOMBRE @item.PERSONA.PRIMER_APELLIDO @item.PERSONA.SEGUNDO_APELLIDO
+        </td>
+        <td>
+            @item.JVPM_DOC
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.JVPM_DOC })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.JVPM_DOC })
+        </td>
+    </tr>
+}
+
+</table>
+

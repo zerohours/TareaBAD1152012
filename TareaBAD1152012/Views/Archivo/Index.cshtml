@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.Archivo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Empleado de Archivo</h2>
+
+<p>
+    Muestra un listado de todas los empleados de archivo en el sistema.
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Codigo
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.PERSONA.PRIMER_NOMBRE @item.PERSONA.SEGUNDO_NOMBRE @item.PERSONA.PRIMER_APELLIDO @item.PERSONA.SEGUNDO_APELLIDO
+        </td>
+        <td>
+            @item.COD_EMPLEADO
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.COD_EMPLEADO })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.COD_EMPLEADO })
+        </td>
+    </tr>
+}
+
+</table>
+
+
