@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.SignosVitales>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Expediene
+        </th>
+        <th>
+            Frecuencia Cardiaca
+        </th>
+        <th>
+            Temperatura Corporal
+        </th>
+        <th>
+            Peso
+        </th>
+        <th>
+            Observacion
+        </th>
+        <th>
+            Frecuencia Respiratoria
+        </th>
+        <th>
+            Otros Signos
+        </th>
+        <th>
+            Presion Sistolica
+        </th>
+        <th>
+            Presion Diastolica
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.NUM_EXPEDIENTE
+        </td>
+        <td>
+            @String.Format("{0:F}", item.FRECUENCIA_CARDIACA)
+        </td>
+        <td>
+            @String.Format("{0:F}", item.TEMPERATURA_CORPORAL)
+        </td>
+        <td>
+            @String.Format("{0:F}", item.PESO)
+        </td>
+        <td>
+            @item.OBSERVACION
+        </td>
+        <td>
+            @item.FRECUENCIA_RESPIRATORIA
+        </td>
+        <td>
+            @item.OTROS_SIGNOS
+        </td>
+        <td>
+            @String.Format("{0:F}", item.presion_sistolica)
+        </td>
+        <td>
+            @String.Format("{0:F}", item.presion_diastolica)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_SIGNOSV })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_SIGNOSV })
+        </td>
+    </tr>
+}
+
+</table>
+

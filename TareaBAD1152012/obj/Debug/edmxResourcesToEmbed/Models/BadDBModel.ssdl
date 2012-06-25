@@ -162,9 +162,9 @@
     </Key>
     <Property Name="ID_ANTECEDENTES" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
-    <Property Name="FUMA" Type="bit" Nullable="false" />
-    <Property Name="ALCOHOLICO" Type="bit" Nullable="false" />
-    <Property Name="ANTIDEPRESIVO" Type="bit" Nullable="false" />
+    <Property Name="FUMA" Type="bit" />
+    <Property Name="ALCOHOLICO" Type="bit" />
+    <Property Name="ANTIDEPRESIVO" Type="bit" />
     <Property Name="HABITOSALIMENTICIOS" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="CONDICION_DE_VIDA" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="ANTECEDENTES_HEREDO_FAMILIARES" Type="text" />
@@ -350,6 +350,7 @@
     <Property Name="ID_DEPTO" Type="int" Nullable="false" />
     <Property Name="ID_MUNICIPIO" Type="int" Nullable="false" />
     <Property Name="DIRECCION" Type="varchar" MaxLength="255" />
+    <Property Name="estado_civil" Type="char" MaxLength="1" />
   </EntityType>
   <EntityType Name="PRODUCE">
     <Key>
@@ -402,13 +403,14 @@
     </Key>
     <Property Name="ID_SIGNOSV" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
-    <Property Name="FRECUENCIA_CARDIACA" Type="varchar" MaxLength="25" />
-    <Property Name="TEMPERATURA_CORPORAL" Type="varchar" MaxLength="25" />
-    <Property Name="PESO" Type="int" />
-    <Property Name="PRESION_ARTERIAL" Type="varchar" MaxLength="25" />
+    <Property Name="FRECUENCIA_CARDIACA" Type="numeric" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="TEMPERATURA_CORPORAL" Type="numeric" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="PESO" Type="numeric" Nullable="false" Precision="4" Scale="2" />
     <Property Name="OBSERVACION" Type="varchar" MaxLength="100" />
-    <Property Name="FRECUENCIA_RESPIRATORIA" Type="char" MaxLength="10" />
+    <Property Name="FRECUENCIA_RESPIRATORIA" Type="int" />
     <Property Name="OTROS_SIGNOS" Type="text" />
+    <Property Name="presion_sistolica" Type="numeric" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="presion_diastolica" Type="numeric" Nullable="false" Precision="4" Scale="2" />
   </EntityType>
   <EntityType Name="TELEFONO">
     <Key>
@@ -844,6 +846,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="delete_antecedentes_personales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_antecedentes" Type="int" Mode="In" />
+  </Function>
   <Function Name="delete_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_depto" Type="int" Mode="In" />
   </Function>
@@ -868,8 +873,26 @@
   <Function Name="delete_persona_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_PERSONA" Type="int" Mode="In" />
   </Function>
+  <Function Name="delete_signos_vitales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_signosv" Type="int" Mode="In" />
+  </Function>
   <Function Name="delete_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_TELEFONO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insert_antecedentes_personales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="num_expediente" Type="int" Mode="In" />
+    <Parameter Name="fuma" Type="bit" Mode="In" />
+    <Parameter Name="alcoholico" Type="bit" Mode="In" />
+    <Parameter Name="antidepresivo" Type="bit" Mode="In" />
+    <Parameter Name="habitosalimenticios" Type="varchar" Mode="In" />
+    <Parameter Name="condicion_de_vida" Type="varchar" Mode="In" />
+    <Parameter Name="antecedentes_heredo_familiares" Type="text" Mode="In" />
+    <Parameter Name="otros" Type="text" Mode="In" />
+    <Parameter Name="personales_patologicos" Type="text" Mode="In" />
+    <Parameter Name="deportes" Type="text" Mode="In" />
+    <Parameter Name="inmunizaciones" Type="text" Mode="In" />
+    <Parameter Name="toxicomanias" Type="text" Mode="In" />
+    <Parameter Name="gineco_obstetricos" Type="text" Mode="In" />
   </Function>
   <Function Name="insert_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nomb_depto" Type="varchar" Mode="In" />
@@ -920,11 +943,38 @@
     <Parameter Name="ID_MUNICIPIO" Type="int" Mode="In" />
     <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="insert_signos_vitales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NUM_EXPEDIENTE" Type="int" Mode="In" />
+    <Parameter Name="FRECUENCIA_CARDIACA" Type="numeric" Mode="In" />
+    <Parameter Name="TEMPERATURA_CORPORAL" Type="numeric" Mode="In" />
+    <Parameter Name="PESO" Type="numeric" Mode="In" />
+    <Parameter Name="OBSERVACION" Type="varchar" Mode="In" />
+    <Parameter Name="FRECUENCIA_RESPIRATORIA" Type="int" Mode="In" />
+    <Parameter Name="OTROS_SIGNOS" Type="text" Mode="In" />
+    <Parameter Name="presion_sistolica" Type="numeric" Mode="In" />
+    <Parameter Name="presion_diastolica" Type="numeric" Mode="In" />
+  </Function>
   <Function Name="insert_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="TELEFONO_PERSONAL" Type="int" Mode="In" />
     <Parameter Name="TELEFONO_CASA" Type="int" Mode="In" />
     <Parameter Name="TELEFONO_ALTERNATIVO" Type="int" Mode="In" />
     <Parameter Name="ID_PERSONA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="update_antecedentes_personales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_antecedentes" Type="int" Mode="In" />
+    <Parameter Name="num_expediente" Type="int" Mode="In" />
+    <Parameter Name="fuma" Type="bit" Mode="In" />
+    <Parameter Name="alcoholico" Type="bit" Mode="In" />
+    <Parameter Name="antidepresivo" Type="bit" Mode="In" />
+    <Parameter Name="habitosalimenticios" Type="varchar" Mode="In" />
+    <Parameter Name="condicion_de_vida" Type="varchar" Mode="In" />
+    <Parameter Name="antecedentes_heredo_familiares" Type="text" Mode="In" />
+    <Parameter Name="otros" Type="text" Mode="In" />
+    <Parameter Name="personales_patologicos" Type="text" Mode="In" />
+    <Parameter Name="deportes" Type="text" Mode="In" />
+    <Parameter Name="inmunizaciones" Type="text" Mode="In" />
+    <Parameter Name="toxicomanias" Type="text" Mode="In" />
+    <Parameter Name="gineco_obstetricos" Type="text" Mode="In" />
   </Function>
   <Function Name="update_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nomb_depto" Type="varchar" Mode="In" />
@@ -977,6 +1027,18 @@
     <Parameter Name="ID_DEPTO" Type="int" Mode="In" />
     <Parameter Name="ID_MUNICIPIO" Type="int" Mode="In" />
     <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="update_signos_vitales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_signosv" Type="int" Mode="In" />
+    <Parameter Name="NUM_EXPEDIENTE" Type="int" Mode="In" />
+    <Parameter Name="FRECUENCIA_CARDIACA" Type="numeric" Mode="In" />
+    <Parameter Name="TEMPERATURA_CORPORAL" Type="numeric" Mode="In" />
+    <Parameter Name="PESO" Type="numeric" Mode="In" />
+    <Parameter Name="OBSERVACION" Type="varchar" Mode="In" />
+    <Parameter Name="FRECUENCIA_RESPIRATORIA" Type="int" Mode="In" />
+    <Parameter Name="OTROS_SIGNOS" Type="text" Mode="In" />
+    <Parameter Name="presion_sistolica" Type="numeric" Mode="In" />
+    <Parameter Name="presion_diastolica" Type="numeric" Mode="In" />
   </Function>
   <Function Name="update_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="TELEFONO_PERSONAL" Type="int" Mode="In" />

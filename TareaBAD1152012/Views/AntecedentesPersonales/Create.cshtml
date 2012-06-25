@@ -1,0 +1,131 @@
+﻿@model TareaBAD1152012.Models.AntecedentesPersonales
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>AntecedentesPersonales</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NUM_EXPEDIENTE)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("NUM_EXPEDIENTE")
+            @Html.ValidationMessageFor(model => model.NUM_EXPEDIENTE)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Fuma")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FUMA)
+            @Html.ValidationMessageFor(model => model.FUMA)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Alcoholico")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ALCOHOLICO)
+            @Html.ValidationMessageFor(model => model.ALCOHOLICO)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Antidepresivos")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ANTIDEPRESIVO)
+            @Html.ValidationMessageFor(model => model.ANTIDEPRESIVO)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Habitos Alimenticios")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HABITOSALIMENTICIOS)
+            @Html.ValidationMessageFor(model => model.HABITOSALIMENTICIOS)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Condiciones de Vida")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CONDICION_DE_VIDA)
+            @Html.ValidationMessageFor(model => model.CONDICION_DE_VIDA)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Antecedentes Heredo-Familiares")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ANTECEDENTES_HEREDO_FAMILIARES)
+            @Html.ValidationMessageFor(model => model.ANTECEDENTES_HEREDO_FAMILIARES)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Otros")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OTROS)
+            @Html.ValidationMessageFor(model => model.OTROS)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Patologias Personales")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSONALES_PATOLOGICOS)
+            @Html.ValidationMessageFor(model => model.PERSONALES_PATOLOGICOS)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Deportes")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DEPORTES)
+            @Html.ValidationMessageFor(model => model.DEPORTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Inmunizaciones")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INMUNIZACIONES)
+            @Html.ValidationMessageFor(model => model.INMUNIZACIONES)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Toxicomanias")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TOXICOMANIAS)
+            @Html.ValidationMessageFor(model => model.TOXICOMANIAS)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Gineco Obstetricos")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GINECO_OBSTETRICOS)
+            @Html.ValidationMessageFor(model => model.GINECO_OBSTETRICOS)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

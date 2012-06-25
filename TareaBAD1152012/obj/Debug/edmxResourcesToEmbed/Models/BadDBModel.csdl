@@ -344,6 +344,7 @@
     <NavigationProperty Name="MUNICIPIO" Relationship="BadApp.Models.FK_PERSONA_MUNICIPIO" FromRole="PERSONA" ToRole="MUNICIPIO" />
     <NavigationProperty Name="PACIENTE" Relationship="BadApp.Models.FK_PACIENTE_PERSONA" FromRole="PERSONA" ToRole="PACIENTE" />
     <NavigationProperty Name="TELEFONO" Relationship="BadApp.Models.FK_TELEFONO_PERSONA" FromRole="PERSONA" ToRole="TELEFONO" />
+    <Property Type="String" Name="estado_civil" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
   <EntityType Name="Referencia">
     <Key>
@@ -383,14 +384,15 @@
     </Key>
     <Property Name="ID_SIGNOSV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NUM_EXPEDIENTE" Type="Int32" Nullable="false" />
-    <Property Name="FRECUENCIA_CARDIACA" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
-    <Property Name="TEMPERATURA_CORPORAL" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
-    <Property Name="PESO" Type="Int32" />
-    <Property Name="PRESION_ARTERIAL" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="FRECUENCIA_CARDIACA" Type="Decimal" Nullable="false" />
+    <Property Name="TEMPERATURA_CORPORAL" Type="Decimal" Nullable="false" />
+    <Property Name="PESO" Type="Decimal" Nullable="false" />
     <Property Name="OBSERVACION" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="FRECUENCIA_RESPIRATORIA" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="FRECUENCIA_RESPIRATORIA" Type="Int32" />
     <Property Name="OTROS_SIGNOS" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="EXPEDIENTE" Relationship="BadApp.Models.FK_SIGNOS_VITALES" FromRole="SIGNOS_VITALES" ToRole="EXPEDIENTE" />
+    <Property Type="Decimal" Name="presion_sistolica" Nullable="false" Precision="4" Scale="2" />
+    <Property Type="Decimal" Name="presion_diastolica" Nullable="false" Precision="4" Scale="2" />
   </EntityType>
   <EntityType Name="Telefono">
     <Key>

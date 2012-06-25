@@ -20,6 +20,44 @@
           <ScalarProperty Name="GINECO_OBSTETRICOS" ColumnName="GINECO_OBSTETRICOS" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.AntecedentesPersonales">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_antecedentes_personales_pr">
+            <ScalarProperty Name="GINECO_OBSTETRICOS" ParameterName="gineco_obstetricos" />
+            <ScalarProperty Name="TOXICOMANIAS" ParameterName="toxicomanias" />
+            <ScalarProperty Name="INMUNIZACIONES" ParameterName="inmunizaciones" />
+            <ScalarProperty Name="DEPORTES" ParameterName="deportes" />
+            <ScalarProperty Name="PERSONALES_PATOLOGICOS" ParameterName="personales_patologicos" />
+            <ScalarProperty Name="OTROS" ParameterName="otros" />
+            <ScalarProperty Name="ANTECEDENTES_HEREDO_FAMILIARES" ParameterName="antecedentes_heredo_familiares" />
+            <ScalarProperty Name="CONDICION_DE_VIDA" ParameterName="condicion_de_vida" />
+            <ScalarProperty Name="HABITOSALIMENTICIOS" ParameterName="habitosalimenticios" />
+            <ScalarProperty Name="ANTIDEPRESIVO" ParameterName="antidepresivo" />
+            <ScalarProperty Name="ALCOHOLICO" ParameterName="alcoholico" />
+            <ScalarProperty Name="FUMA" ParameterName="fuma" />
+            <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="num_expediente" />
+          </InsertFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_antecedentes_personales_pr">
+            <ScalarProperty Name="ID_ANTECEDENTES" ParameterName="id_antecedentes" />
+          </DeleteFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_antecedentes_personales_pr">
+            <ScalarProperty Name="GINECO_OBSTETRICOS" ParameterName="gineco_obstetricos" Version="Current" />
+            <ScalarProperty Name="TOXICOMANIAS" ParameterName="toxicomanias" Version="Current" />
+            <ScalarProperty Name="INMUNIZACIONES" ParameterName="inmunizaciones" Version="Current" />
+            <ScalarProperty Name="DEPORTES" ParameterName="deportes" Version="Current" />
+            <ScalarProperty Name="PERSONALES_PATOLOGICOS" ParameterName="personales_patologicos" Version="Current" />
+            <ScalarProperty Name="OTROS" ParameterName="otros" Version="Current" />
+            <ScalarProperty Name="ANTECEDENTES_HEREDO_FAMILIARES" ParameterName="antecedentes_heredo_familiares" Version="Current" />
+            <ScalarProperty Name="CONDICION_DE_VIDA" ParameterName="condicion_de_vida" Version="Current" />
+            <ScalarProperty Name="HABITOSALIMENTICIOS" ParameterName="habitosalimenticios" Version="Current" />
+            <ScalarProperty Name="ANTIDEPRESIVO" ParameterName="antidepresivo" Version="Current" />
+            <ScalarProperty Name="ALCOHOLICO" ParameterName="alcoholico" Version="Current" />
+            <ScalarProperty Name="FUMA" ParameterName="fuma" Version="Current" />
+            <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="num_expediente" Version="Current" />
+            <ScalarProperty Name="ID_ANTECEDENTES" ParameterName="id_antecedentes" Version="Current" />
+          </UpdateFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ArchivoSet">
       <EntityTypeMapping TypeName="BadApp.Models.Archivo">
@@ -293,6 +331,7 @@
     <EntitySetMapping Name="PersonaSet">
       <EntityTypeMapping TypeName="BadApp.Models.Persona">
         <MappingFragment StoreEntitySet="PERSONA">
+          <ScalarProperty Name="estado_civil" ColumnName="estado_civil" />
           <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
           <ScalarProperty Name="SEGUNDO_NOMBRE" ColumnName="SEGUNDO_NOMBRE" />
           <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
@@ -382,16 +421,47 @@
     <EntitySetMapping Name="SignosVitalesSet">
       <EntityTypeMapping TypeName="BadApp.Models.SignosVitales">
         <MappingFragment StoreEntitySet="SIGNOS_VITALES">
+          <ScalarProperty Name="presion_diastolica" ColumnName="presion_diastolica" />
+          <ScalarProperty Name="presion_sistolica" ColumnName="presion_sistolica" />
           <ScalarProperty Name="ID_SIGNOSV" ColumnName="ID_SIGNOSV" />
           <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
           <ScalarProperty Name="FRECUENCIA_CARDIACA" ColumnName="FRECUENCIA_CARDIACA" />
           <ScalarProperty Name="TEMPERATURA_CORPORAL" ColumnName="TEMPERATURA_CORPORAL" />
           <ScalarProperty Name="PESO" ColumnName="PESO" />
-          <ScalarProperty Name="PRESION_ARTERIAL" ColumnName="PRESION_ARTERIAL" />
           <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
           <ScalarProperty Name="FRECUENCIA_RESPIRATORIA" ColumnName="FRECUENCIA_RESPIRATORIA" />
           <ScalarProperty Name="OTROS_SIGNOS" ColumnName="OTROS_SIGNOS" />
         </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BadApp.Models.SignosVitales">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BadApp.Models.Store.insert_signos_vitales_pr">
+            <ScalarProperty Name="presion_diastolica" ParameterName="presion_diastolica" />
+            <ScalarProperty Name="presion_sistolica" ParameterName="presion_sistolica" />
+            <ScalarProperty Name="OTROS_SIGNOS" ParameterName="OTROS_SIGNOS" />
+            <ScalarProperty Name="FRECUENCIA_RESPIRATORIA" ParameterName="FRECUENCIA_RESPIRATORIA" />
+            <ScalarProperty Name="OBSERVACION" ParameterName="OBSERVACION" />
+            <ScalarProperty Name="PESO" ParameterName="PESO" />
+            <ScalarProperty Name="TEMPERATURA_CORPORAL" ParameterName="TEMPERATURA_CORPORAL" />
+            <ScalarProperty Name="FRECUENCIA_CARDIACA" ParameterName="FRECUENCIA_CARDIACA" />
+            <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="NUM_EXPEDIENTE" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BadApp.Models.Store.update_signos_vitales_pr">
+            <ScalarProperty Name="ID_SIGNOSV" ParameterName="id_signosv" Version="Current" />
+            <ScalarProperty Name="presion_diastolica" ParameterName="presion_diastolica" Version="Current" />
+            <ScalarProperty Name="presion_sistolica" ParameterName="presion_sistolica" Version="Current" />
+            <ScalarProperty Name="OTROS_SIGNOS" ParameterName="OTROS_SIGNOS" Version="Current" />
+            <ScalarProperty Name="FRECUENCIA_RESPIRATORIA" ParameterName="FRECUENCIA_RESPIRATORIA" Version="Current" />
+            <ScalarProperty Name="OBSERVACION" ParameterName="OBSERVACION" Version="Current" />
+            <ScalarProperty Name="PESO" ParameterName="PESO" Version="Current" />
+            <ScalarProperty Name="TEMPERATURA_CORPORAL" ParameterName="TEMPERATURA_CORPORAL" Version="Current" />
+            <ScalarProperty Name="FRECUENCIA_CARDIACA" ParameterName="FRECUENCIA_CARDIACA" Version="Current" />
+            <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="NUM_EXPEDIENTE" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BadApp.Models.Store.delete_signos_vitales_pr">
+            <ScalarProperty Name="ID_SIGNOSV" ParameterName="id_signosv" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TelefonoSet">

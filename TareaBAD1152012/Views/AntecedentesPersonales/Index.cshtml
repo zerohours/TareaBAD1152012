@@ -1,0 +1,120 @@
+﻿@model IEnumerable<TareaBAD1152012.Models.AntecedentesPersonales>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>
+            Expediente
+        </th>
+        <th>
+            Fuma
+        </th>
+        <th>
+            Alcoholico
+        </th>
+        <th>
+            Antidepresivo
+        </th>
+        <th>
+            Habitos Alimenticios
+        </th>
+        <th>
+            Condiciones Vida
+        </th>
+        <th>
+            Antecedentes
+        </th>
+        <th>
+            Patologias
+        </th>
+        <th>
+            Deportes
+        </th>
+        <th>
+            Inmunizaciones
+        </th>
+        <th>
+            Toxicomanias
+        </th>
+        <th>
+            Gineco
+        </th>
+        <th>
+            Otros
+        </th>
+        <th>
+            Editar
+        </th>
+        <th>
+            Eliminar
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.NUM_EXPEDIENTE
+        </td>
+        <td>
+            @if (@item.FUMA)
+            { @Html.Label("Si") }
+            else { @Html.Label("No") }
+        </td>
+        <td>
+            @if (@item.ALCOHOLICO)
+            { @Html.Label("Si") }
+            else { @Html.Label("No") }
+        </td>
+        <td>
+            @if (@item.ANTIDEPRESIVO)
+            { @Html.Label("Si") }
+            else { @Html.Label("No") }
+        </td>
+        <td>
+            @item.HABITOSALIMENTICIOS
+        </td>
+        <td>
+            @item.CONDICION_DE_VIDA
+        </td>
+        <td>
+            @item.ANTECEDENTES_HEREDO_FAMILIARES
+        </td>
+        <td>
+            @item.PERSONALES_PATOLOGICOS
+        </td>
+        <td>
+            @item.DEPORTES
+        </td>
+        <td>
+            @item.INMUNIZACIONES
+        </td>
+        <td>
+            @item.TOXICOMANIAS
+        </td>
+        <td>
+            @item.GINECO_OBSTETRICOS
+        </td>
+        <td>
+            @item.OTROS
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_ANTECEDENTES })
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_ANTECEDENTES })
+        </td>
+
+    </tr>
+}
+
+</table>
+

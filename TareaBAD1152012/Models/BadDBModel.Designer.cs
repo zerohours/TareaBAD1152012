@@ -4336,6 +4336,30 @@ namespace TareaBAD1152012.Models
         private global::System.String _DIRECCION;
         partial void OnDIRECCIONChanging(global::System.String value);
         partial void OnDIRECCIONChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estado_civil
+        {
+            get
+            {
+                return _estado_civil;
+            }
+            set
+            {
+                Onestado_civilChanging(value);
+                ReportPropertyChanging("estado_civil");
+                _estado_civil = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estado_civil");
+                Onestado_civilChanged();
+            }
+        }
+        private global::System.String _estado_civil;
+        partial void Onestado_civilChanging(global::System.String value);
+        partial void Onestado_civilChanged();
 
         #endregion
     
@@ -5157,11 +5181,21 @@ namespace TareaBAD1152012.Models
         /// </summary>
         /// <param name="iD_SIGNOSV">Valor inicial de la propiedad ID_SIGNOSV.</param>
         /// <param name="nUM_EXPEDIENTE">Valor inicial de la propiedad NUM_EXPEDIENTE.</param>
-        public static SignosVitales CreateSignosVitales(global::System.Int32 iD_SIGNOSV, global::System.Int32 nUM_EXPEDIENTE)
+        /// <param name="fRECUENCIA_CARDIACA">Valor inicial de la propiedad FRECUENCIA_CARDIACA.</param>
+        /// <param name="tEMPERATURA_CORPORAL">Valor inicial de la propiedad TEMPERATURA_CORPORAL.</param>
+        /// <param name="pESO">Valor inicial de la propiedad PESO.</param>
+        /// <param name="presion_sistolica">Valor inicial de la propiedad presion_sistolica.</param>
+        /// <param name="presion_diastolica">Valor inicial de la propiedad presion_diastolica.</param>
+        public static SignosVitales CreateSignosVitales(global::System.Int32 iD_SIGNOSV, global::System.Int32 nUM_EXPEDIENTE, global::System.Decimal fRECUENCIA_CARDIACA, global::System.Decimal tEMPERATURA_CORPORAL, global::System.Decimal pESO, global::System.Decimal presion_sistolica, global::System.Decimal presion_diastolica)
         {
             SignosVitales signosVitales = new SignosVitales();
             signosVitales.ID_SIGNOSV = iD_SIGNOSV;
             signosVitales.NUM_EXPEDIENTE = nUM_EXPEDIENTE;
+            signosVitales.FRECUENCIA_CARDIACA = fRECUENCIA_CARDIACA;
+            signosVitales.TEMPERATURA_CORPORAL = tEMPERATURA_CORPORAL;
+            signosVitales.PESO = pESO;
+            signosVitales.presion_sistolica = presion_sistolica;
+            signosVitales.presion_diastolica = presion_diastolica;
             return signosVitales;
         }
 
@@ -5222,9 +5256,9 @@ namespace TareaBAD1152012.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String FRECUENCIA_CARDIACA
+        public global::System.Decimal FRECUENCIA_CARDIACA
         {
             get
             {
@@ -5234,21 +5268,21 @@ namespace TareaBAD1152012.Models
             {
                 OnFRECUENCIA_CARDIACAChanging(value);
                 ReportPropertyChanging("FRECUENCIA_CARDIACA");
-                _FRECUENCIA_CARDIACA = StructuralObject.SetValidValue(value, true);
+                _FRECUENCIA_CARDIACA = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FRECUENCIA_CARDIACA");
                 OnFRECUENCIA_CARDIACAChanged();
             }
         }
-        private global::System.String _FRECUENCIA_CARDIACA;
-        partial void OnFRECUENCIA_CARDIACAChanging(global::System.String value);
+        private global::System.Decimal _FRECUENCIA_CARDIACA;
+        partial void OnFRECUENCIA_CARDIACAChanging(global::System.Decimal value);
         partial void OnFRECUENCIA_CARDIACAChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String TEMPERATURA_CORPORAL
+        public global::System.Decimal TEMPERATURA_CORPORAL
         {
             get
             {
@@ -5258,21 +5292,21 @@ namespace TareaBAD1152012.Models
             {
                 OnTEMPERATURA_CORPORALChanging(value);
                 ReportPropertyChanging("TEMPERATURA_CORPORAL");
-                _TEMPERATURA_CORPORAL = StructuralObject.SetValidValue(value, true);
+                _TEMPERATURA_CORPORAL = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("TEMPERATURA_CORPORAL");
                 OnTEMPERATURA_CORPORALChanged();
             }
         }
-        private global::System.String _TEMPERATURA_CORPORAL;
-        partial void OnTEMPERATURA_CORPORALChanging(global::System.String value);
+        private global::System.Decimal _TEMPERATURA_CORPORAL;
+        partial void OnTEMPERATURA_CORPORALChanging(global::System.Decimal value);
         partial void OnTEMPERATURA_CORPORALChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> PESO
+        public global::System.Decimal PESO
         {
             get
             {
@@ -5287,33 +5321,9 @@ namespace TareaBAD1152012.Models
                 OnPESOChanged();
             }
         }
-        private Nullable<global::System.Int32> _PESO;
-        partial void OnPESOChanging(Nullable<global::System.Int32> value);
+        private global::System.Decimal _PESO;
+        partial void OnPESOChanging(global::System.Decimal value);
         partial void OnPESOChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String PRESION_ARTERIAL
-        {
-            get
-            {
-                return _PRESION_ARTERIAL;
-            }
-            set
-            {
-                OnPRESION_ARTERIALChanging(value);
-                ReportPropertyChanging("PRESION_ARTERIAL");
-                _PRESION_ARTERIAL = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("PRESION_ARTERIAL");
-                OnPRESION_ARTERIALChanged();
-            }
-        }
-        private global::System.String _PRESION_ARTERIAL;
-        partial void OnPRESION_ARTERIALChanging(global::System.String value);
-        partial void OnPRESION_ARTERIALChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -5344,7 +5354,7 @@ namespace TareaBAD1152012.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String FRECUENCIA_RESPIRATORIA
+        public Nullable<global::System.Int32> FRECUENCIA_RESPIRATORIA
         {
             get
             {
@@ -5354,13 +5364,13 @@ namespace TareaBAD1152012.Models
             {
                 OnFRECUENCIA_RESPIRATORIAChanging(value);
                 ReportPropertyChanging("FRECUENCIA_RESPIRATORIA");
-                _FRECUENCIA_RESPIRATORIA = StructuralObject.SetValidValue(value, true);
+                _FRECUENCIA_RESPIRATORIA = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("FRECUENCIA_RESPIRATORIA");
                 OnFRECUENCIA_RESPIRATORIAChanged();
             }
         }
-        private global::System.String _FRECUENCIA_RESPIRATORIA;
-        partial void OnFRECUENCIA_RESPIRATORIAChanging(global::System.String value);
+        private Nullable<global::System.Int32> _FRECUENCIA_RESPIRATORIA;
+        partial void OnFRECUENCIA_RESPIRATORIAChanging(Nullable<global::System.Int32> value);
         partial void OnFRECUENCIA_RESPIRATORIAChanged();
     
         /// <summary>
@@ -5386,6 +5396,54 @@ namespace TareaBAD1152012.Models
         private global::System.String _OTROS_SIGNOS;
         partial void OnOTROS_SIGNOSChanging(global::System.String value);
         partial void OnOTROS_SIGNOSChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal presion_sistolica
+        {
+            get
+            {
+                return _presion_sistolica;
+            }
+            set
+            {
+                Onpresion_sistolicaChanging(value);
+                ReportPropertyChanging("presion_sistolica");
+                _presion_sistolica = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("presion_sistolica");
+                Onpresion_sistolicaChanged();
+            }
+        }
+        private global::System.Decimal _presion_sistolica;
+        partial void Onpresion_sistolicaChanging(global::System.Decimal value);
+        partial void Onpresion_sistolicaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal presion_diastolica
+        {
+            get
+            {
+                return _presion_diastolica;
+            }
+            set
+            {
+                Onpresion_diastolicaChanging(value);
+                ReportPropertyChanging("presion_diastolica");
+                _presion_diastolica = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("presion_diastolica");
+                Onpresion_diastolicaChanged();
+            }
+        }
+        private global::System.Decimal _presion_diastolica;
+        partial void Onpresion_diastolicaChanging(global::System.Decimal value);
+        partial void Onpresion_diastolicaChanged();
 
         #endregion
     

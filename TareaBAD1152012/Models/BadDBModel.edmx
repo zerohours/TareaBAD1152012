@@ -167,9 +167,9 @@
           </Key>
           <Property Name="ID_ANTECEDENTES" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
-          <Property Name="FUMA" Type="bit" Nullable="false" />
-          <Property Name="ALCOHOLICO" Type="bit" Nullable="false" />
-          <Property Name="ANTIDEPRESIVO" Type="bit" Nullable="false" />
+          <Property Name="FUMA" Type="bit" />
+          <Property Name="ALCOHOLICO" Type="bit" />
+          <Property Name="ANTIDEPRESIVO" Type="bit" />
           <Property Name="HABITOSALIMENTICIOS" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="CONDICION_DE_VIDA" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="ANTECEDENTES_HEREDO_FAMILIARES" Type="text" />
@@ -355,6 +355,7 @@
           <Property Name="ID_DEPTO" Type="int" Nullable="false" />
           <Property Name="ID_MUNICIPIO" Type="int" Nullable="false" />
           <Property Name="DIRECCION" Type="varchar" MaxLength="255" />
+          <Property Name="estado_civil" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="PRODUCE">
           <Key>
@@ -407,13 +408,14 @@
           </Key>
           <Property Name="ID_SIGNOSV" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NUM_EXPEDIENTE" Type="int" Nullable="false" />
-          <Property Name="FRECUENCIA_CARDIACA" Type="varchar" MaxLength="25" />
-          <Property Name="TEMPERATURA_CORPORAL" Type="varchar" MaxLength="25" />
-          <Property Name="PESO" Type="int" />
-          <Property Name="PRESION_ARTERIAL" Type="varchar" MaxLength="25" />
+          <Property Name="FRECUENCIA_CARDIACA" Type="numeric" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="TEMPERATURA_CORPORAL" Type="numeric" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="PESO" Type="numeric" Nullable="false" Precision="4" Scale="2" />
           <Property Name="OBSERVACION" Type="varchar" MaxLength="100" />
-          <Property Name="FRECUENCIA_RESPIRATORIA" Type="char" MaxLength="10" />
+          <Property Name="FRECUENCIA_RESPIRATORIA" Type="int" />
           <Property Name="OTROS_SIGNOS" Type="text" />
+          <Property Name="presion_sistolica" Type="numeric" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="presion_diastolica" Type="numeric" Nullable="false" Precision="4" Scale="2" />
         </EntityType>
         <EntityType Name="TELEFONO">
           <Key>
@@ -849,6 +851,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="delete_antecedentes_personales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_antecedentes" Type="int" Mode="In" />
+        </Function>
         <Function Name="delete_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_depto" Type="int" Mode="In" />
         </Function>
@@ -873,8 +878,26 @@
         <Function Name="delete_persona_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_PERSONA" Type="int" Mode="In" />
         </Function>
+        <Function Name="delete_signos_vitales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_signosv" Type="int" Mode="In" />
+        </Function>
         <Function Name="delete_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_TELEFONO" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_antecedentes_personales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="num_expediente" Type="int" Mode="In" />
+          <Parameter Name="fuma" Type="bit" Mode="In" />
+          <Parameter Name="alcoholico" Type="bit" Mode="In" />
+          <Parameter Name="antidepresivo" Type="bit" Mode="In" />
+          <Parameter Name="habitosalimenticios" Type="varchar" Mode="In" />
+          <Parameter Name="condicion_de_vida" Type="varchar" Mode="In" />
+          <Parameter Name="antecedentes_heredo_familiares" Type="text" Mode="In" />
+          <Parameter Name="otros" Type="text" Mode="In" />
+          <Parameter Name="personales_patologicos" Type="text" Mode="In" />
+          <Parameter Name="deportes" Type="text" Mode="In" />
+          <Parameter Name="inmunizaciones" Type="text" Mode="In" />
+          <Parameter Name="toxicomanias" Type="text" Mode="In" />
+          <Parameter Name="gineco_obstetricos" Type="text" Mode="In" />
         </Function>
         <Function Name="insert_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nomb_depto" Type="varchar" Mode="In" />
@@ -925,11 +948,38 @@
           <Parameter Name="ID_MUNICIPIO" Type="int" Mode="In" />
           <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="insert_signos_vitales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM_EXPEDIENTE" Type="int" Mode="In" />
+          <Parameter Name="FRECUENCIA_CARDIACA" Type="numeric" Mode="In" />
+          <Parameter Name="TEMPERATURA_CORPORAL" Type="numeric" Mode="In" />
+          <Parameter Name="PESO" Type="numeric" Mode="In" />
+          <Parameter Name="OBSERVACION" Type="varchar" Mode="In" />
+          <Parameter Name="FRECUENCIA_RESPIRATORIA" Type="int" Mode="In" />
+          <Parameter Name="OTROS_SIGNOS" Type="text" Mode="In" />
+          <Parameter Name="presion_sistolica" Type="numeric" Mode="In" />
+          <Parameter Name="presion_diastolica" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="insert_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TELEFONO_PERSONAL" Type="int" Mode="In" />
           <Parameter Name="TELEFONO_CASA" Type="int" Mode="In" />
           <Parameter Name="TELEFONO_ALTERNATIVO" Type="int" Mode="In" />
           <Parameter Name="ID_PERSONA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="update_antecedentes_personales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_antecedentes" Type="int" Mode="In" />
+          <Parameter Name="num_expediente" Type="int" Mode="In" />
+          <Parameter Name="fuma" Type="bit" Mode="In" />
+          <Parameter Name="alcoholico" Type="bit" Mode="In" />
+          <Parameter Name="antidepresivo" Type="bit" Mode="In" />
+          <Parameter Name="habitosalimenticios" Type="varchar" Mode="In" />
+          <Parameter Name="condicion_de_vida" Type="varchar" Mode="In" />
+          <Parameter Name="antecedentes_heredo_familiares" Type="text" Mode="In" />
+          <Parameter Name="otros" Type="text" Mode="In" />
+          <Parameter Name="personales_patologicos" Type="text" Mode="In" />
+          <Parameter Name="deportes" Type="text" Mode="In" />
+          <Parameter Name="inmunizaciones" Type="text" Mode="In" />
+          <Parameter Name="toxicomanias" Type="text" Mode="In" />
+          <Parameter Name="gineco_obstetricos" Type="text" Mode="In" />
         </Function>
         <Function Name="update_departamento_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nomb_depto" Type="varchar" Mode="In" />
@@ -982,6 +1032,18 @@
           <Parameter Name="ID_DEPTO" Type="int" Mode="In" />
           <Parameter Name="ID_MUNICIPIO" Type="int" Mode="In" />
           <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="update_signos_vitales_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_signosv" Type="int" Mode="In" />
+          <Parameter Name="NUM_EXPEDIENTE" Type="int" Mode="In" />
+          <Parameter Name="FRECUENCIA_CARDIACA" Type="numeric" Mode="In" />
+          <Parameter Name="TEMPERATURA_CORPORAL" Type="numeric" Mode="In" />
+          <Parameter Name="PESO" Type="numeric" Mode="In" />
+          <Parameter Name="OBSERVACION" Type="varchar" Mode="In" />
+          <Parameter Name="FRECUENCIA_RESPIRATORIA" Type="int" Mode="In" />
+          <Parameter Name="OTROS_SIGNOS" Type="text" Mode="In" />
+          <Parameter Name="presion_sistolica" Type="numeric" Mode="In" />
+          <Parameter Name="presion_diastolica" Type="numeric" Mode="In" />
         </Function>
         <Function Name="update_telefono_pr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TELEFONO_PERSONAL" Type="int" Mode="In" />
@@ -1337,6 +1399,7 @@
           <NavigationProperty Name="MUNICIPIO" Relationship="BadApp.Models.FK_PERSONA_MUNICIPIO" FromRole="PERSONA" ToRole="MUNICIPIO" />
           <NavigationProperty Name="PACIENTE" Relationship="BadApp.Models.FK_PACIENTE_PERSONA" FromRole="PERSONA" ToRole="PACIENTE" />
           <NavigationProperty Name="TELEFONO" Relationship="BadApp.Models.FK_TELEFONO_PERSONA" FromRole="PERSONA" ToRole="TELEFONO" />
+          <Property Type="String" Name="estado_civil" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Referencia">
           <Key>
@@ -1376,14 +1439,15 @@
           </Key>
           <Property Name="ID_SIGNOSV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NUM_EXPEDIENTE" Type="Int32" Nullable="false" />
-          <Property Name="FRECUENCIA_CARDIACA" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
-          <Property Name="TEMPERATURA_CORPORAL" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
-          <Property Name="PESO" Type="Int32" />
-          <Property Name="PRESION_ARTERIAL" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="FRECUENCIA_CARDIACA" Type="Decimal" Nullable="false" />
+          <Property Name="TEMPERATURA_CORPORAL" Type="Decimal" Nullable="false" />
+          <Property Name="PESO" Type="Decimal" Nullable="false" />
           <Property Name="OBSERVACION" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="FRECUENCIA_RESPIRATORIA" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FRECUENCIA_RESPIRATORIA" Type="Int32" />
           <Property Name="OTROS_SIGNOS" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="EXPEDIENTE" Relationship="BadApp.Models.FK_SIGNOS_VITALES" FromRole="SIGNOS_VITALES" ToRole="EXPEDIENTE" />
+          <Property Type="Decimal" Name="presion_sistolica" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Decimal" Name="presion_diastolica" Nullable="false" Precision="4" Scale="2" />
         </EntityType>
         <EntityType Name="Telefono">
           <Key>
@@ -1702,7 +1766,45 @@
             <ScalarProperty Name="INMUNIZACIONES" ColumnName="INMUNIZACIONES" />
             <ScalarProperty Name="TOXICOMANIAS" ColumnName="TOXICOMANIAS" />
             <ScalarProperty Name="GINECO_OBSTETRICOS" ColumnName="GINECO_OBSTETRICOS" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="BadApp.Models.AntecedentesPersonales">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BadApp.Models.Store.insert_antecedentes_personales_pr" >
+                  <ScalarProperty Name="GINECO_OBSTETRICOS" ParameterName="gineco_obstetricos" />
+                  <ScalarProperty Name="TOXICOMANIAS" ParameterName="toxicomanias" />
+                  <ScalarProperty Name="INMUNIZACIONES" ParameterName="inmunizaciones" />
+                  <ScalarProperty Name="DEPORTES" ParameterName="deportes" />
+                  <ScalarProperty Name="PERSONALES_PATOLOGICOS" ParameterName="personales_patologicos" />
+                  <ScalarProperty Name="OTROS" ParameterName="otros" />
+                  <ScalarProperty Name="ANTECEDENTES_HEREDO_FAMILIARES" ParameterName="antecedentes_heredo_familiares" />
+                  <ScalarProperty Name="CONDICION_DE_VIDA" ParameterName="condicion_de_vida" />
+                  <ScalarProperty Name="HABITOSALIMENTICIOS" ParameterName="habitosalimenticios" />
+                  <ScalarProperty Name="ANTIDEPRESIVO" ParameterName="antidepresivo" />
+                  <ScalarProperty Name="ALCOHOLICO" ParameterName="alcoholico" />
+                  <ScalarProperty Name="FUMA" ParameterName="fuma" />
+                  <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="num_expediente" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="BadApp.Models.Store.delete_antecedentes_personales_pr" >
+                  <ScalarProperty Name="ID_ANTECEDENTES" ParameterName="id_antecedentes" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="BadApp.Models.Store.update_antecedentes_personales_pr" >
+                  <ScalarProperty Name="GINECO_OBSTETRICOS" ParameterName="gineco_obstetricos" Version="Current" />
+                  <ScalarProperty Name="TOXICOMANIAS" ParameterName="toxicomanias" Version="Current" />
+                  <ScalarProperty Name="INMUNIZACIONES" ParameterName="inmunizaciones" Version="Current" />
+                  <ScalarProperty Name="DEPORTES" ParameterName="deportes" Version="Current" />
+                  <ScalarProperty Name="PERSONALES_PATOLOGICOS" ParameterName="personales_patologicos" Version="Current" />
+                  <ScalarProperty Name="OTROS" ParameterName="otros" Version="Current" />
+                  <ScalarProperty Name="ANTECEDENTES_HEREDO_FAMILIARES" ParameterName="antecedentes_heredo_familiares" Version="Current" />
+                  <ScalarProperty Name="CONDICION_DE_VIDA" ParameterName="condicion_de_vida" Version="Current" />
+                  <ScalarProperty Name="HABITOSALIMENTICIOS" ParameterName="habitosalimenticios" Version="Current" />
+                  <ScalarProperty Name="ANTIDEPRESIVO" ParameterName="antidepresivo" Version="Current" />
+                  <ScalarProperty Name="ALCOHOLICO" ParameterName="alcoholico" Version="Current" />
+                  <ScalarProperty Name="FUMA" ParameterName="fuma" Version="Current" />
+                  <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="num_expediente" Version="Current" />
+                  <ScalarProperty Name="ID_ANTECEDENTES" ParameterName="id_antecedentes" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ArchivoSet"><EntityTypeMapping TypeName="BadApp.Models.Archivo"><MappingFragment StoreEntitySet="ARCHIVO">
             <ScalarProperty Name="ID_PERSONA" ColumnName="ID_PERSONA" />
             <ScalarProperty Name="COD_EMPLEADO" ColumnName="COD_EMPLEADO" />
@@ -1909,7 +2011,8 @@
             <ScalarProperty Name="COD_PAC" ColumnName="COD_PAC" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PersonaSet"><EntityTypeMapping TypeName="BadApp.Models.Persona"><MappingFragment StoreEntitySet="PERSONA">
-            <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
+            <ScalarProperty Name="estado_civil" ColumnName="estado_civil" />
+                <ScalarProperty Name="PRIMER_NOMBRE" ColumnName="PRIMER_NOMBRE" />
             <ScalarProperty Name="SEGUNDO_NOMBRE" ColumnName="SEGUNDO_NOMBRE" />
             <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
             <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
@@ -1986,16 +2089,47 @@
             <ScalarProperty Name="OBSERVACION_6" ColumnName="OBSERVACION_6" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SignosVitalesSet"><EntityTypeMapping TypeName="BadApp.Models.SignosVitales"><MappingFragment StoreEntitySet="SIGNOS_VITALES">
-            <ScalarProperty Name="ID_SIGNOSV" ColumnName="ID_SIGNOSV" />
+            <ScalarProperty Name="presion_diastolica" ColumnName="presion_diastolica" />
+                <ScalarProperty Name="presion_sistolica" ColumnName="presion_sistolica" />
+                <ScalarProperty Name="ID_SIGNOSV" ColumnName="ID_SIGNOSV" />
             <ScalarProperty Name="NUM_EXPEDIENTE" ColumnName="NUM_EXPEDIENTE" />
             <ScalarProperty Name="FRECUENCIA_CARDIACA" ColumnName="FRECUENCIA_CARDIACA" />
             <ScalarProperty Name="TEMPERATURA_CORPORAL" ColumnName="TEMPERATURA_CORPORAL" />
             <ScalarProperty Name="PESO" ColumnName="PESO" />
-            <ScalarProperty Name="PRESION_ARTERIAL" ColumnName="PRESION_ARTERIAL" />
             <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
             <ScalarProperty Name="FRECUENCIA_RESPIRATORIA" ColumnName="FRECUENCIA_RESPIRATORIA" />
             <ScalarProperty Name="OTROS_SIGNOS" ColumnName="OTROS_SIGNOS" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          </MappingFragment></EntityTypeMapping>
+            <EntityTypeMapping TypeName="BadApp.Models.SignosVitales">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BadApp.Models.Store.insert_signos_vitales_pr">
+                  <ScalarProperty Name="presion_diastolica" ParameterName="presion_diastolica" />
+                  <ScalarProperty Name="presion_sistolica" ParameterName="presion_sistolica" />
+                  <ScalarProperty Name="OTROS_SIGNOS" ParameterName="OTROS_SIGNOS" />
+                  <ScalarProperty Name="FRECUENCIA_RESPIRATORIA" ParameterName="FRECUENCIA_RESPIRATORIA" />
+                  <ScalarProperty Name="OBSERVACION" ParameterName="OBSERVACION" />
+                  <ScalarProperty Name="PESO" ParameterName="PESO" />
+                  <ScalarProperty Name="TEMPERATURA_CORPORAL" ParameterName="TEMPERATURA_CORPORAL" />
+                  <ScalarProperty Name="FRECUENCIA_CARDIACA" ParameterName="FRECUENCIA_CARDIACA" />
+                  <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="NUM_EXPEDIENTE" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="BadApp.Models.Store.update_signos_vitales_pr">
+                  <ScalarProperty Name="ID_SIGNOSV" ParameterName="id_signosv" Version="Current" />
+                  <ScalarProperty Name="presion_diastolica" ParameterName="presion_diastolica" Version="Current" />
+                  <ScalarProperty Name="presion_sistolica" ParameterName="presion_sistolica" Version="Current" />
+                  <ScalarProperty Name="OTROS_SIGNOS" ParameterName="OTROS_SIGNOS" Version="Current" />
+                  <ScalarProperty Name="FRECUENCIA_RESPIRATORIA" ParameterName="FRECUENCIA_RESPIRATORIA" Version="Current" />
+                  <ScalarProperty Name="OBSERVACION" ParameterName="OBSERVACION" Version="Current" />
+                  <ScalarProperty Name="PESO" ParameterName="PESO" Version="Current" />
+                  <ScalarProperty Name="TEMPERATURA_CORPORAL" ParameterName="TEMPERATURA_CORPORAL" Version="Current" />
+                  <ScalarProperty Name="FRECUENCIA_CARDIACA" ParameterName="FRECUENCIA_CARDIACA" Version="Current" />
+                  <ScalarProperty Name="NUM_EXPEDIENTE" ParameterName="NUM_EXPEDIENTE" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="BadApp.Models.Store.delete_signos_vitales_pr" >
+                  <ScalarProperty Name="ID_SIGNOSV" ParameterName="id_signosv" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="TelefonoSet"><EntityTypeMapping TypeName="BadApp.Models.Telefono"><MappingFragment StoreEntitySet="TELEFONO">
             <ScalarProperty Name="TELEFONO_PERSONAL" ColumnName="TELEFONO_PERSONAL" />
             <ScalarProperty Name="TELEFONO_CASA" ColumnName="TELEFONO_CASA" />
@@ -2107,147 +2241,148 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BadDBModel" ZoomLevel="100">
-        <EntityTypeShape EntityType="BadApp.Models.AntecedentesPersonales" Width="1.5" PointX="12" PointY="16" Height="3.9033007812499978" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Archivo" Width="1.5" PointX="7.5" PointY="5.625" Height="1.7879850260416657" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.CatalogoRoles" Width="1.5" PointX="0.625" PointY="6.875" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Cita" Width="1.5" PointX="12" PointY="11.375" Height="3.5186979166666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Consulta" Width="1.5" PointX="12" PointY="20.625" Height="2.172587890624996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Departamento" Width="1.5" PointX="0.75" PointY="18.5" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Diagnostico" Width="1.5" PointX="14.25" PointY="20.75" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Doctor" Width="1.5" PointX="7.5" PointY="9.375" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Especialidad" Width="1.5" PointX="9.75" PointY="8.125" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Examen" Width="1.5" PointX="16.5" PointY="20.75" Height="1.9802864583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Expediente" Width="1.5" PointX="9.75" PointY="21.5" Height="3.1340950520833317" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.HoraCita" Width="1.5" PointX="14.375" PointY="11.375" Height="1.7879850260416745" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Horario" Width="1.5" PointX="9.75" PointY="10.5" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Laboratorista" Width="1.5" PointX="7.5" PointY="13.375" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Medicamento" Width="1.5" PointX="16.625" PointY="16.5" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Municipio" Width="1.5" PointX="3" PointY="18.375" Height="1.9802864583333388" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Paciente" Width="1.5" PointX="7.5" PointY="22.125" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Persona" Width="1.5" PointX="5.25" PointY="16.875" Height="4.8648079427083388" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Referencia" Width="1.5" PointX="12" PointY="23.5" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.ResultadoExamen" Width="1.5" PointX="18.75" PointY="16.375" Height="3.326396484374996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.SignosVitales" Width="1.5" PointX="9.75" PointY="25.5" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Telefono" Width="1.5" PointX="5.25" PointY="22.5" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Tratamiento" Width="1.5" PointX="14.125" PointY="16.375" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="BadApp.Models.Usuario" Width="1.5" PointX="2.875" PointY="6.5" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.AntecedentesPersonales" Width="1.5" PointX="12.375" PointY="10.875" Height="3.9033007812499978" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Archivo" Width="1.5" PointX="7.875" PointY="0.5" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.CatalogoRoles" Width="1.5" PointX="1" PointY="1.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Cita" Width="1.5" PointX="12.375" PointY="6.25" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Consulta" Width="1.5" PointX="12.375" PointY="15.5" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Departamento" Width="1.5" PointX="1.125" PointY="13.375" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Diagnostico" Width="1.5" PointX="14.625" PointY="15.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Doctor" Width="1.5" PointX="7.875" PointY="4.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Especialidad" Width="1.5" PointX="10.125" PointY="3" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Examen" Width="1.5" PointX="16.875" PointY="15.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Expediente" Width="1.5" PointX="10.125" PointY="16.375" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.HoraCita" Width="1.5" PointX="14.75" PointY="6.25" Height="1.7879850260416745" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Horario" Width="1.5" PointX="10.125" PointY="5.375" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Laboratorista" Width="1.5" PointX="7.875" PointY="8.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Medicamento" Width="1.5" PointX="17" PointY="11.375" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Municipio" Width="1.5" PointX="3.375" PointY="13.25" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Paciente" Width="1.5" PointX="7.875" PointY="17" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Persona" Width="1.5" PointX="5.625" PointY="11.75" Height="5.0571093750000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Referencia" Width="1.5" PointX="12.375" PointY="18.375" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.ResultadoExamen" Width="1.5" PointX="19.125" PointY="11.25" Height="3.326396484374996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.SignosVitales" Width="1.5" PointX="10.125" PointY="20.375" Height="3.1340950520833353" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Telefono" Width="1.5" PointX="5.625" PointY="17.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Tratamiento" Width="1.5" PointX="14.5" PointY="11.25" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="BadApp.Models.Usuario" Width="1.5" PointX="3.25" PointY="1.375" Height="2.172587890624996" IsExpanded="true" />
         <AssociationConnector Association="BadApp.Models.FK_ANTECEDENTES_EXPEDIENTE" ManuallyRouted="false">
-          <ConnectorPoint PointX="11.25" PointY="21.556537461538461" />
-          <ConnectorPoint PointX="11.78125" PointY="21.025287461538461" />
-          <ConnectorPoint PointX="11.78125" PointY="17.951650390624998" />
-          <ConnectorPoint PointX="12" PointY="17.951650390624998" />
+          <ConnectorPoint PointX="10.875" PointY="16.375" />
+          <ConnectorPoint PointX="10.875" PointY="12.826650390624998" />
+          <ConnectorPoint PointX="11.916666666666666" PointY="12.826650390624998" />
+          <ConnectorPoint PointX="12.083333333333334" PointY="12.826650390624998" />
+          <ConnectorPoint PointX="12.375" PointY="12.826650390624998" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_ARCHIVO_PERSONA" ManuallyRouted="false">
-          <ConnectorPoint PointX="6" PointY="16.875" />
-          <ConnectorPoint PointX="6" PointY="6.5189925130208328" />
-          <ConnectorPoint PointX="7.5" PointY="6.5189925130208328" />
+          <ConnectorPoint PointX="6.375" PointY="11.75" />
+          <ConnectorPoint PointX="6.375" PointY="1.3939925130208328" />
+          <ConnectorPoint PointX="7.875" PointY="1.3939925130208328" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_CITA_ARCHIVO" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="6.5189925130208328" />
-          <ConnectorPoint PointX="12.75" PointY="6.5189925130208328" />
-          <ConnectorPoint PointX="12.75" PointY="11.375" />
+          <ConnectorPoint PointX="9.375" PointY="1.3939925130208328" />
+          <ConnectorPoint PointX="13.125" PointY="1.3939925130208328" />
+          <ConnectorPoint PointX="13.125" PointY="6.25" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_USUARIO_ROL" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.125" PointY="7.672841796875" />
-          <ConnectorPoint PointX="2.875" PointY="7.672841796875" />
+          <ConnectorPoint PointX="2.5" PointY="2.547841796875" />
+          <ConnectorPoint PointX="3.25" PointY="2.547841796875" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_CITA_DOCTOR" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="10.110341796875" />
-          <ConnectorPoint PointX="12.3437475" PointY="10.110341796875" />
-          <ConnectorPoint PointX="12.3437475" PointY="11.375" />
+          <ConnectorPoint PointX="9.375" PointY="4.985341796875" />
+          <ConnectorPoint PointX="12.7187475" PointY="4.985341796875" />
+          <ConnectorPoint PointX="12.7187475" PointY="6.25" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_CITA_EXPEDIENTE" ManuallyRouted="false">
-          <ConnectorPoint PointX="11.25" PointY="21.5" />
-          <ConnectorPoint PointX="11.625" PointY="21.125" />
-          <ConnectorPoint PointX="11.625" PointY="13.134348958333334" />
-          <ConnectorPoint PointX="12" PointY="13.134348958333334" />
+          <ConnectorPoint PointX="11.625" PointY="16.375" />
+          <ConnectorPoint PointX="12" PointY="16" />
+          <ConnectorPoint PointX="12" PointY="8.0093489583333337" />
+          <ConnectorPoint PointX="12.375" PointY="8.0093489583333337" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_CITA_HORA_CITA" ManuallyRouted="false">
-          <ConnectorPoint PointX="14.375" PointY="12.268992513020837" />
-          <ConnectorPoint PointX="13.5" PointY="12.268992513020837" />
+          <ConnectorPoint PointX="14.75" PointY="7.1439925130208373" />
+          <ConnectorPoint PointX="13.875" PointY="7.1439925130208373" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.PK_CONSULTA_EXPEDIENTE" ManuallyRouted="false">
-          <ConnectorPoint PointX="11.25" PointY="22.208315176081729" />
-          <ConnectorPoint PointX="12" PointY="22.208315176081729" />
+          <ConnectorPoint PointX="11.625" PointY="17.0550464453125" />
+          <ConnectorPoint PointX="12.375" PointY="17.0550464453125" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_MUNICIPIO_DEPTO" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="19.297841796875" />
-          <ConnectorPoint PointX="3" PointY="19.297841796875" />
+          <ConnectorPoint PointX="2.625" PointY="14.172841796875002" />
+          <ConnectorPoint PointX="3.375" PointY="14.172841796875002" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_DOCTOR_PERSONA" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.4062525" PointY="16.875" />
-          <ConnectorPoint PointX="6.4062525" PointY="10.4612939453125" />
-          <ConnectorPoint PointX="7.5" PointY="10.4612939453125" />
+          <ConnectorPoint PointX="6.7812525" PointY="11.75" />
+          <ConnectorPoint PointX="6.7812525" PointY="5.3362939453125" />
+          <ConnectorPoint PointX="7.875" PointY="5.3362939453125" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_RESULTADO_EXA_EXAMEN" ManuallyRouted="false">
-          <ConnectorPoint PointX="18" PointY="21.740143229166666" />
-          <ConnectorPoint PointX="19.5" PointY="21.740143229166666" />
-          <ConnectorPoint PointX="19.5" PointY="19.701396484374996" />
+          <ConnectorPoint PointX="16.90625" PointY="15.625" />
+          <ConnectorPoint PointX="16.90625" PointY="14.0932421875" />
+          <ConnectorPoint PointX="19.125" PointY="14.0932421875" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.fk_EXPEDIENTE_COD_PACIENTE" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="9.75" PointY="23.018992513020834" />
+          <ConnectorPoint PointX="9.375" PointY="17.893992513020834" />
+          <ConnectorPoint PointX="10.125" PointY="17.893992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_REFERENCIA_EXPEDIENTE" ManuallyRouted="false">
-          <ConnectorPoint PointX="11.25" PointY="24.067047526041666" />
-          <ConnectorPoint PointX="12" PointY="24.067047526041666" />
+          <ConnectorPoint PointX="11.625" PointY="18.942047526041666" />
+          <ConnectorPoint PointX="12.375" PointY="18.942047526041666" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_SIGNOS_VITALES" ManuallyRouted="false">
-          <ConnectorPoint PointX="10.5" PointY="24.634095052083332" />
-          <ConnectorPoint PointX="10.5" PointY="25.5" />
+          <ConnectorPoint PointX="10.875" PointY="19.509095052083332" />
+          <ConnectorPoint PointX="10.875" PointY="20.375" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_LABORATORISTA_PERSONA" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.5937475" PointY="16.875" />
-          <ConnectorPoint PointX="5.5937475" PointY="14.268992513020834" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="14.268992513020834" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="14.268992513020834" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="14.268992513020834" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="14.268992513020834" />
-          <ConnectorPoint PointX="7.5" PointY="14.268992513020834" />
+          <ConnectorPoint PointX="5.9687475" PointY="11.75" />
+          <ConnectorPoint PointX="5.9687475" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6.291666666666667" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6.458333333333333" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6.6979191666666669" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6.8645858333333329" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="7.875" PointY="9.1439925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_RESULTADO_LABORATORISTA" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="15.059591471354167" />
-          <ConnectorPoint PointX="11.541666666666666" PointY="15.059591471354167" />
-          <ConnectorPoint PointX="11.708333333333334" PointY="15.059591471354167" />
-          <ConnectorPoint PointX="19.5" PointY="15.059591471354167" />
-          <ConnectorPoint PointX="19.5" PointY="16.375" />
+          <ConnectorPoint PointX="9.375" PointY="9.9345914713541674" />
+          <ConnectorPoint PointX="11.916666666666666" PointY="9.9345914713541674" />
+          <ConnectorPoint PointX="12.083333333333334" PointY="9.9345914713541674" />
+          <ConnectorPoint PointX="19.875" PointY="9.9345914713541674" />
+          <ConnectorPoint PointX="19.875" PointY="11.25" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_PERSONA_MUNICIPIO" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="19.365143229166669" />
-          <ConnectorPoint PointX="5.25" PointY="19.365143229166669" />
+          <ConnectorPoint PointX="4.875" PointY="14.240143229166669" />
+          <ConnectorPoint PointX="5.625" PointY="14.240143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_PACIENTE_PERSONA" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="19.307403971354169" />
-          <ConnectorPoint PointX="8.25" PointY="19.307403971354169" />
-          <ConnectorPoint PointX="8.25" PointY="22.125" />
+          <ConnectorPoint PointX="7.125" PointY="14.278554687500002" />
+          <ConnectorPoint PointX="8.625" PointY="14.278554687500002" />
+          <ConnectorPoint PointX="8.625" PointY="17" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.FK_TELEFONO_PERSONA" ManuallyRouted="false">
-          <ConnectorPoint PointX="6" PointY="21.739807942708339" />
-          <ConnectorPoint PointX="6" PointY="22.5" />
+          <ConnectorPoint PointX="6.375" PointY="16.807109375000003" />
+          <ConnectorPoint PointX="6.375" PointY="17.375" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.DIAGNOSTICO_TRATAMIENTO" ManuallyRouted="false">
-          <ConnectorPoint PointX="14.9375" PointY="20.75" />
-          <ConnectorPoint PointX="14.9375" PointY="18.739889322916667" />
+          <ConnectorPoint PointX="15.3125" PointY="15.625" />
+          <ConnectorPoint PointX="15.3125" PointY="13.614889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.DOCTOR_ESPECIALIDAD" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="9.547841796875" />
-          <ConnectorPoint PointX="9.75" PointY="9.547841796875" />
+          <ConnectorPoint PointX="9.375" PointY="4.422841796875" />
+          <ConnectorPoint PointX="10.125" PointY="4.422841796875" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.PRODUCE" ManuallyRouted="false">
-          <ConnectorPoint PointX="13.5" PointY="21.740143229166666" />
-          <ConnectorPoint PointX="14.25" PointY="21.740143229166666" />
+          <ConnectorPoint PointX="13.875" PointY="16.615143229166666" />
+          <ConnectorPoint PointX="14.625" PointY="16.615143229166666" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.SE_ASOCIA_A_EXAMEN" ManuallyRouted="false">
-          <ConnectorPoint PointX="15.75" PointY="21.771395729166667" />
-          <ConnectorPoint PointX="16.5" PointY="21.771395729166667" />
+          <ConnectorPoint PointX="16.125" PointY="16.615143229166666" />
+          <ConnectorPoint PointX="16.875" PointY="16.615143229166666" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.TRABAJA" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="11.0237939453125" />
-          <ConnectorPoint PointX="9.75" PointY="11.0237939453125" />
+          <ConnectorPoint PointX="9.375" PointY="5.8987939453125" />
+          <ConnectorPoint PointX="10.125" PointY="5.8987939453125" />
         </AssociationConnector>
         <AssociationConnector Association="BadApp.Models.TRATAMIENTO_MEDICAMENTO" ManuallyRouted="false">
-          <ConnectorPoint PointX="16.625" PointY="17.5862939453125" />
-          <ConnectorPoint PointX="15.625" PointY="17.5862939453125" />
+          <ConnectorPoint PointX="17" PointY="12.461293945312502" />
+          <ConnectorPoint PointX="16" PointY="12.461293945312502" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

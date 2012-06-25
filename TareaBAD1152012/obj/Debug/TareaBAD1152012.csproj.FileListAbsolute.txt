@@ -1,5 +1,5 @@
-C:\Users\Brizuela\Documents\Visual Studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\bin\TareaBAD1152012.dll
-C:\Users\Brizuela\Documents\Visual Studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\bin\TareaBAD1152012.pdb
-C:\Users\Brizuela\Documents\Visual Studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Brizuela\Documents\Visual Studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\obj\Debug\TareaBAD1152012.dll
-C:\Users\Brizuela\Documents\Visual Studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\obj\Debug\TareaBAD1152012.pdb
+C:\Users\Brizuela\documents\visual studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\bin\TareaBAD1152012.dll
+C:\Users\Brizuela\documents\visual studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\bin\TareaBAD1152012.pdb
+C:\Users\Brizuela\documents\visual studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Brizuela\documents\visual studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\obj\Debug\TareaBAD1152012.dll
+C:\Users\Brizuela\documents\visual studio 2010\Projects\TareaBAD1152012\TareaBAD1152012\obj\Debug\TareaBAD1152012.pdb
