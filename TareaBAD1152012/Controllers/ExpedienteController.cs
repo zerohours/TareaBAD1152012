@@ -55,8 +55,18 @@ namespace TareaBAD1152012.Controllers
             {
                 // TODO: Add insert logic here
                 if (!ModelState.IsValid)
+                {
+
+                    var query = _db.PersonaSet.Select(c => new
+                    {
+                        ID_PERSONA = c.ID_PERSONA,
+                        PRIMER_NOMBRE = c.PRIMER_NOMBRE + " " + c.PRIMER_APELLIDO
+                    });
+
+                    ViewBag.ID_PERSONA = new SelectList(query.AsEnumerable(), "ID_PERSONA", "PRIMER_NOMBRE");
 
                     return View(expedienteToCreate);
+                }
 
                 _db.AddToExpedienteSet(expedienteToCreate);
 

@@ -76,6 +76,7 @@
     <Compile Include="Controllers\MunicipioController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
+    <Compile Include="Controllers\ReferenciaController.cs" />
     <Compile Include="Controllers\SignosVitalesController.cs" />
     <Compile Include="Controllers\TelefonoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -103,7 +104,9 @@
     <Content Include="Scripts\bootstrap-scrollspy.js" />
     <Content Include="Scripts\bootstrap-tooltip.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -301,6 +304,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SignosVitales\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SignosVitales\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

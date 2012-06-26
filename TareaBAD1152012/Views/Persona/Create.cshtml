@@ -104,6 +104,14 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.estado_civil)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.estado_civil)
+            @Html.ValidationMessageFor(model => model.estado_civil)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.ID_DEPTO)
         </div>
         <div class="editor-field">

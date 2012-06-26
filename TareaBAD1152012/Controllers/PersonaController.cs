@@ -37,7 +37,7 @@ namespace TareaBAD1152012.Controllers
 
             var query = _db.DepartamentoSet.Select(c => new { c.ID_DEPTO, c.NOMBRE_DEPTO });
 
-            ViewBag.ID_DEPTO = new SelectList(query.AsEnumerable(), "ID_DEPTO", "NOMBRE_DEPTO");
+            ViewData["ID_DEPTO"] = new SelectList(query.AsEnumerable(), "ID_DEPTO", "NOMBRE_DEPTO");
 
             var query2 = _db.MunicipioSet.Select(c => new { c.ID_MUNICIPIO, c.NOMBRE_MUNICIPIO });
 
@@ -57,6 +57,7 @@ namespace TareaBAD1152012.Controllers
                 // TODO: Add insert logic here
                 if (!ModelState.IsValid)
                 {
+
                     var query = _db.DepartamentoSet.Select(c => new { c.ID_DEPTO, c.NOMBRE_DEPTO });
 
                     ViewBag.ID_DEPTO = new SelectList(query.AsEnumerable(), "ID_DEPTO", "NOMBRE_DEPTO");
@@ -67,6 +68,7 @@ namespace TareaBAD1152012.Controllers
 
                     return View(personaToCreate);
                 }
+
 
                 _db.AddToPersonaSet(personaToCreate);
 

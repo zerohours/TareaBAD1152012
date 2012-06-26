@@ -34,13 +34,13 @@ namespace TareaBAD1152012.Controllers
         public ActionResult Create()
         {
 
-            /*var query = _db.ExpedienteSet.Select(c => new
+            var query = _db.ExpedienteSet.Select(c => new
             {
                 NUM_EXPEDIENTE = c.NUM_EXPEDIENTE,
                 PRIMER_NOMBRE = c.PACIENTE.PERSONA.PRIMER_NOMBRE + " " + c.PACIENTE.PERSONA.PRIMER_APELLIDO
             });
 
-            ViewBag.NUM_EXPEDIENTE = new SelectList(query.AsEnumerable(), "NUM_EXPEDIENTE", "PRIMER_NOMBRE");*/
+            ViewBag.NUM_EXPEDIENTE = new SelectList(query.AsEnumerable(), "NUM_EXPEDIENTE", "PRIMER_NOMBRE");
 
             return View();
         } 
@@ -57,13 +57,13 @@ namespace TareaBAD1152012.Controllers
                 if (!ModelState.IsValid)
                 {
 
-                    /*var query = _db.ExpedienteSet.Select(c => new
+                    var query = _db.ExpedienteSet.Select(c => new
                     {
                         NUM_EXPEDIENTE = c.NUM_EXPEDIENTE,
                         PRIMER_NOMBRE = c.PACIENTE.PERSONA.PRIMER_NOMBRE + " " + c.PACIENTE.PERSONA.PRIMER_APELLIDO
                     });
 
-                    ViewBag.NUM_EXPEDIENTE = new SelectList(query.AsEnumerable(), "NUM_EXPEDIENTE", "PRIMER_NOMBRE");*/
+                    ViewBag.NUM_EXPEDIENTE = new SelectList(query.AsEnumerable(), "NUM_EXPEDIENTE", "PRIMER_NOMBRE");
 
                     return View(signosToCreate);
                 }
@@ -85,18 +85,37 @@ namespace TareaBAD1152012.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View();
+            var signosToEdit = (from m in _db.SignosVitalesSet
+
+                                 where m.ID_SIGNOSV == id
+
+                                 select m).First();
+
+            return View(signosToEdit);
         }
 
         //
         // POST: /SignosVitales/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, SignosVitales signosToEdit)
         {
             try
             {
                 // TODO: Add update logic here
+                var originalSig = (from m in _db.SignosVitalesSet
+
+                                      where m.ID_SIGNOSV == signosToEdit.ID_SIGNOSV
+
+                                      select m).First();
+
+                if (!ModelState.IsValid)
+
+                    return View(originalSig);
+
+                _db.ApplyCurrentValues(originalSig.EntityKey.EntitySetName, signosToEdit);
+
+                _db.SaveChanges();
  
                 return RedirectToAction("Index");
             }
